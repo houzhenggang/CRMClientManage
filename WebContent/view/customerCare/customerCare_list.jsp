@@ -114,14 +114,24 @@ if  (cs[1].style.backgroundColor!=clickcolor&&source.id!="nc"){
 	}
 
 	function query(){
-		document.forms[0].action="CustCareQueryByType";
+		var query = document.getElementById("queryType").value;
+		if(query == null || query == ""){
+			return false;
+		}else{
+			document.forms[0].action="CustomerCareQueryServlet?id=2";
+			return true;
+		}
+	}
+	
+	function pageCheck(){
+		
 	}
 </script>
   </head>
   
   <body>
   
-  <form method="post" onsubmit="query()">
+  <form method="post" onsubmit="return query()">
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
     <td height="30" background="<%=basePath%>resource/images/tab_05.gif"><table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -130,14 +140,16 @@ if  (cs[1].style.backgroundColor!=clickcolor&&source.id!="nc"){
                 <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
           <tr>
             <td class="STYLE4" align="center">&nbsp;&nbsp;请输入查询内容：
-                <input type="text" name="customerInput" style="width: 290px"/></td>
+               <input id="queryType" type="text" name="customerInput" style="width: 290px" value="${requestScope.cInput }"/>
+            </td>
             <td class="STYLE4">&nbsp;&nbsp;请选择查询方式：
                 <select name="queryType" style="width: 100px">
       					<option value="1" >关怀客户</option>
      				 	<option value="2" >关怀主题</option>
      				 	<option value="3" >关怀方式</option>
    				 </select>            
-   				</td>
+   			</td>
+   			
             <td class="STYLE4">&nbsp;&nbsp;
                 <input  type="submit" value="查询" style="width:50px"/>
             </td>           
@@ -227,9 +239,19 @@ if  (cs[1].style.backgroundColor!=clickcolor&&source.id!="nc"){
                      </a></td>
                   
                   <td width="45">
+                  <c:choose>
+                     <c:when test="${requestScope.mark==2 }"> 
+                     <a href="CustomerCareQueryServlet?id=2&queryType=${requestScope.type }&customerInput=${requestScope.queryType}&pagenum=${requestScope.nowPage+1 }">
+                     <img src="<%=basePath%>resource/images/next.gif" width="43" height="15" />
+                     </a>
+                     </c:when>
+                     <c:otherwise>
                      <a href="CustomerCareQueryServlet?pagenum=${requestScope.nowPage+1 }">
                      <img src="<%=basePath%>resource/images/next.gif" width="43" height="15" />
-                  </a></td>   
+                     </a>
+                     </c:otherwise>
+                  </c:choose>
+                  </td>   
                   <td width="40">
                      <a href="CustomerCareQueryServlet?pagenum=${requestScope.pageCount }">
                      <img src="<%=basePath%>resource/images/last.gif" width="37" height="15" />

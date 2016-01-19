@@ -39,18 +39,39 @@ public class CustomerCareQueryServlet extends HttpServlet {
 		}
 		
 		List<Map<String, Object>> allData = new ArrayList<>();
-		try {
-			allData = dao.queryCareOnPage(nowPage, 4);
-			
-			request.setAttribute("Cares", allData);
+		String idstr = request.getParameter("id");
+		System.out.println(idstr);
 
-			request.setAttribute("nowPage", dao.getNowPage());
-			request.setAttribute("pageCount", dao.getPageCount());
-			request.setAttribute("rowCount", dao.getRowCount());
-			
+		try {
+			if(idstr != null && idstr.equals("2")){
+				String type = request.getParameter("queryType");
+				String queryType = request.getParameter("customerInput");
+				
+				System.out.println(type+"\t"+queryType);
+				if(type.equals("1")){
+					int cust_id = Integer.parseInt(queryType);
+					allData = dao.queryCareByCustomer(nowPage,4,cust_id);
+				}else if(type.equals("2")){
+					allData = dao.queryCareByTheme(nowPage,4,queryType);
+				}else if (type.equals("3")){
+					allData = dao.queryCareByCareway(nowPage,4,queryType);
+				}
+				request.setAttribute("cInput", queryType);
+				request.setAttribute("qType", type);
+				request.setAttribute("mark", 2);
+			}else{
+	            allData = dao.queryCareOnPage(nowPage, 4);
+	            System.out.println(allData);
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+
+		System.out.println(allData);
+		request.setAttribute("Cares", allData);
+		request.setAttribute("nowPage", dao.getNowPage());
+		request.setAttribute("pageCount", dao.getPageCount());
+		request.setAttribute("rowCount", dao.getRowCount());
 		
 		request.getRequestDispatcher(path).forward(request, response);
 	}

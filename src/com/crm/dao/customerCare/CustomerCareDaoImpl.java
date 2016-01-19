@@ -64,18 +64,18 @@ public class CustomerCareDaoImpl extends BaseDao implements CustomerCareDao{
 		return executeQuery("select * from customer_care where care_id=? ", care_id);
 	}
 
-	public List<Map<String, Object>> queryCareByTheme(String theme) throws Exception{
+	public List<Map<String, Object>> queryCareByTheme(int nowPage,int pageSize,String theme) throws Exception{
 		
-		return executeQueryByMap(" select * from customer_care where care_theme=? ", theme);
+		return queryOnPage(" select * from customer_care where care_theme=? ",nowPage, pageSize,theme);
 	}
 	
-	public List<Map<String, Object>> queryCareByCustomer(int customer) throws Exception{
+	public List<Map<String, Object>> queryCareByCustomer(int nowPage,int pageSize,int customer) throws Exception{
 		
-		return executeQueryByMap(" select * from customer_care where customer_id=? ",customer);
+		return queryOnPage(" select * from customer_care where customer_id=? ",nowPage, pageSize,customer);
 	}
 	
-	public List<Map<String, Object>> queryCareByCareway(String careway) throws Exception{
+	public List<Map<String, Object>> queryCareByCareway(int nowPage,int pageSize,String careway) throws Exception{
 		
-		return executeQueryByMap(" select * from customer_care where care_way=? ",careway);
+		return queryOnPage(" select * from customer_care where care_way=? ",nowPage, pageSize,careway);
 	}
 }
