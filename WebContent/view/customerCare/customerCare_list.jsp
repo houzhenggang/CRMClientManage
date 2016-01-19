@@ -102,15 +102,26 @@ if  (cs[1].style.backgroundColor!=clickcolor&&source.id!="nc"){
 	}
 	
 	function del(careId){
-		location.href="CustomerCareDeleteServlet?id=" + careId;
+		var flag = window.confirm("您确定要删除第" + careId + "记录吗？");
+		if(flag){
+			location.href="CustomerCareDeleteServlet?id=" + careId;
+		}
+	}
+	
+	function jumpto(){
+		var pagenum = document.getElementById("jump").value;
+		location.href="CustomerCareQueryServlet?pagenum=" + pagenum;
 	}
 
+	function query(){
+		document.forms[0].action="CustCareQueryByType";
+	}
 </script>
   </head>
   
   <body>
   
-  <form method="post" >
+  <form method="post" onsubmit="query()">
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
     <td height="30" background="<%=basePath%>resource/images/tab_05.gif"><table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -118,14 +129,18 @@ if  (cs[1].style.backgroundColor!=clickcolor&&source.id!="nc"){
         <td width="12" height="30"><img src="<%=basePath%>resource/images/tab_03.gif" width="12" height="30" /></td>
                 <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
           <tr>
-            <td class="STYLE4" align="center">&nbsp;&nbsp;请输入查询内容：<input type="text" name="customerInput" style="width: 290px"/></td>
-            <td class="STYLE4">&nbsp;&nbsp;请选择查询方式：<select name="queryType" style="width: 100px">
+            <td class="STYLE4" align="center">&nbsp;&nbsp;请输入查询内容：
+                <input type="text" name="customerInput" style="width: 290px"/></td>
+            <td class="STYLE4">&nbsp;&nbsp;请选择查询方式：
+                <select name="queryType" style="width: 100px">
       					<option value="1" >关怀客户</option>
      				 	<option value="2" >关怀主题</option>
      				 	<option value="3" >关怀方式</option>
    				 </select>            
    				</td>
-            <td class="STYLE4">&nbsp;&nbsp;<input  type="submit" value="查询" style="width:50px"/></td>           
+            <td class="STYLE4">&nbsp;&nbsp;
+                <input  type="submit" value="查询" style="width:50px"/>
+            </td>           
           <td class="STYLE4">&nbsp;&nbsp;
           <input  type="button"  onclick="javascript:add()" value="添加"  style="width:50px"/></td>           
           </tr>
@@ -198,17 +213,35 @@ if  (cs[1].style.backgroundColor!=clickcolor&&source.id!="nc"){
         <td width="12" height="35"><img src="<%=basePath%>resource/images/tab_18.gif" width="12" height="35" /></td>
         <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
           <tr>
-            <td class="STYLE4">&nbsp;&nbsp;共有 7 条记录，当前第 1/1 页</td>
+            <td class="STYLE4">&nbsp;&nbsp;共有 ${requestScope.rowCount }条记录，当前第 ${nowPage }/${requestScope.pageCount } 页</td>
             <td><table border="0" align="right" cellpadding="0" cellspacing="0">
                 <tr>
-                  <td width="40"><img src="<%=basePath%>resource/images/first.gif" width="37" height="15" /></td>
-                  <td width="45"><img src="<%=basePath%>resource/images/back.gif" width="43" height="15" /></td>
-                  <td width="45"><img src="<%=basePath%>resource/images/next.gif" width="43" height="15" /></td>
-                  <td width="40"><img src="<%=basePath%>resource/images/last.gif" width="37" height="15" /></td>
+                  <td width="40">
+                     <a href="CustomerCareQueryServlet?pagenum=1">
+                     <img src="<%=basePath%>resource/images/first.gif" width="37" height="15" /></a>
+                  </td>
+                  <td width="45">
+                  
+                     <a href="CustomerCareQueryServlet?pagenum=${requestScope.nowPage-1 }">
+                     <img src="<%=basePath%>resource/images/back.gif" width="43" height="15" />
+                     </a></td>
+                  
+                  <td width="45">
+                     <a href="CustomerCareQueryServlet?pagenum=${requestScope.nowPage+1 }">
+                     <img src="<%=basePath%>resource/images/next.gif" width="43" height="15" />
+                  </a></td>   
+                  <td width="40">
+                     <a href="CustomerCareQueryServlet?pagenum=${requestScope.pageCount }">
+                     <img src="<%=basePath%>resource/images/last.gif" width="37" height="15" />
+                  </a></td>
                   <td width="100"><div align="center"><span class="STYLE1">转到第
-                    <input name="textfield" type="text" size="4" style="height:12px; width:20px; border:1px solid #999999;" /> 
+                    <input id="jump" name="textfield" type="text" size="4" style="height:16px; width:20px; border:1px solid #999999;" /> 
                     页 </span></div></td>
-                  <td width="40"><img src="<%=basePath%>resource/images/go.gif" width="37" height="15" /></td>
+                  <td width="40">
+                      <a href="javascript:jumpto()">
+                         <img src="<%=basePath%>resource/images/go.gif" width="37" height="15" />
+                      </a>
+                  </td>
                 </tr>
             </table></td>
           </tr>

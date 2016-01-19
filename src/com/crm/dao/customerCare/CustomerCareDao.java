@@ -22,5 +22,9 @@ public interface CustomerCareDao {
 	public int getNowPage() ;
 	public int getPageCount();
 	
+	public List<Map<String, Object>> queryCareByTheme(String theme) throws Exception;
 	
+	public List<Map<String, Object>> queryCareByCustomer(int customer) throws Exception;
+	
+	public List<Map<String, Object>> queryCareByCareway(String careway) throws Exception;
 }

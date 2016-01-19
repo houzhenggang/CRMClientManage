@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.crm.bean.customerCare.CustomerCareBean;
 import com.crm.dao.customerCare.CustomerCareDao;
 import com.crm.dao.customerCare.CustomerCareFactory;
 
@@ -21,8 +22,30 @@ public class CustomerCareUpdateServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
+		String care_id = request.getParameter("care_id");
+		int careId = Integer.parseInt(care_id);
+		String  customerId= request.getParameter("customerId");
+		int cusId = Integer.parseInt(customerId);
+		
+		String caretime = request.getParameter("careTime");
+		String  careNexttime= request.getParameter("careNexttime").substring(0, 10);
+		String  careWay= request.getParameter("careWay");
+		String  careRemark= request.getParameter("careRemark");
+		String  carePeople= request.getParameter("carePeople");
+		String  careTheme= request.getParameter("careTheme");
+		
+		System.out.println(careId+"---"+caretime+cusId+careNexttime+careWay+careRemark+carePeople+careTheme);
 		CustomerCareDao dao = CustomerCareFactory.getInstance();
-		//dao.updateCare(careBean);
+		CustomerCareBean careBean = new CustomerCareBean(careId,cusId,careTheme,careWay,caretime,careRemark,careNexttime,carePeople);
+		String path = "CustomerCareQueryServlet";
+		try {
+			int rows = dao.updateCare(careBean);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		request.getRequestDispatcher(path).forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 

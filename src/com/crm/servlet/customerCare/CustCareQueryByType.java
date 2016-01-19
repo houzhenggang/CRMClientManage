@@ -14,43 +14,38 @@ import javax.servlet.http.HttpServletResponse;
 import com.crm.dao.customerCare.CustomerCareDao;
 import com.crm.dao.customerCare.CustomerCareFactory;
 
-@WebServlet("/CustomerCareQueryServlet")
-public class CustomerCareQueryServlet extends HttpServlet {
+@WebServlet("/CustCareQueryByType")
+public class CustCareQueryByType extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public CustomerCareQueryServlet() {
+    public CustCareQueryByType() {
         super();
+        
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		CustomerCareDao dao = CustomerCareFactory.getInstance();
-		int nowPage = 1;
-		String nowPageStr = request.getParameter("pagenum");
+		String type = request.getParameter("queryType");
+		String queryType = request.getParameter("customerInput");
+		
+		System.out.println(type+"---"+queryType);
 		String path = "view/customerCare/customerCare_list.jsp";
-		
-		if(nowPageStr == null || nowPageStr == ""){
-			System.out.println("传入值为空");
-		}else{
-			nowPage = Integer.parseInt(nowPageStr);
-			if(nowPage<=0){
-				nowPage = 1;
-			}
-		}
-		
 		List<Map<String, Object>> allData = new ArrayList<>();
 		try {
-			allData = dao.queryCareOnPage(nowPage, 4);
-			
-			request.setAttribute("Cares", allData);
+			if(type.equals("1")){
+				int cust_id = Integer.parseInt(queryType);
+				allData = dao.queryCareByCustomer(cust_id);
+			}else if(type.equals("2")){
+				allData = dao.queryCareByTheme(queryType);
+			}else if (type.equals("3")){
+				allData = dao.queryCareByCareway(queryType);
+			}
 
-			request.setAttribute("nowPage", dao.getNowPage());
-			request.setAttribute("pageCount", dao.getPageCount());
-			request.setAttribute("rowCount", dao.getRowCount());
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		request.setAttribute("Cares", allData);
 		
 		request.getRequestDispatcher(path).forward(request, response);
 	}

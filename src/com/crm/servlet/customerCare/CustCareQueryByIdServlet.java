@@ -35,8 +35,10 @@ public class CustCareQueryByIdServlet extends HttpServlet {
 			rs = dao.queryCareById(id);
 			while(rs.next()){
 				careBean.setCare_id(id);
+				careBean.setCustomer_id(rs.getInt(2));
 				careBean.setCare_theme(rs.getString(3));
 				careBean.setCare_way(rs.getString(4));
+				careBean.setCare_time(rs.getString(5));
 				careBean.setCare_remark(rs.getString(6));
 				careBean.setCare_nexttime(rs.getString(7));
 				careBean.setCare_people(rs.getString(8));

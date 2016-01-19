@@ -27,6 +27,19 @@ public class CustomerCareBean {
 		this.care_people = care_people;
 	}
 
+	public CustomerCareBean(int care_id, int customer_id, String care_theme, String care_way, String care_time,
+			String care_remark, String care_nexttime, String care_people) {
+		super();
+		this.care_id = care_id;
+		this.customer_id = customer_id;
+		this.care_theme = care_theme;
+		this.care_way = care_way;
+		this.care_time = care_time;
+		this.care_remark = care_remark;
+		this.care_nexttime = care_nexttime;
+		this.care_people = care_people;
+	}
+
 	public int getCare_id() {
 		return care_id;
 	}

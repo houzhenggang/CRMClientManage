@@ -31,23 +31,24 @@
 	margin-left: 0px;
 }
 </style>
+<script type="text/javascript">
+    function checkForm(){
+    	document.forms[0].action="CustomerCareUpdateServlet?care_id=" + ${careUpdBean.care_id};
+</script>
 
 	</head>
 
 	<body>
-		<form action="<%=basePath%>servlet/CustomerCareUpdateServlet"
-			method="post" name="form1" onsubmit="return checkForm('form1');">
+		<form method="post" name="form1" onsubmit="checkForm()">
 		
 			<table class=editTable cellSpacing=1 cellPadding=0 width="100%"
 				align=center border=0>
 				<tr class=editHeaderTr>
 					<td class=editHeaderTd colSpan=7 style="height: 49px">
 						请输入详细信息
-						<input type="hidden" name="careId" value="123"
+						<input type="hidden" name="careId" value="${careUpdBean.care_id }"
 							readonly="readonly">
 					</td>
-
-
 				</tr>
 
 				<tr>
@@ -85,8 +86,8 @@
 						</div>
 					</td>
 					<td colspan="3" bgcolor="#FFFFFF">
-						<input type="text"  style="width: 145px"  disabled="disabled" name="careTime"
-							value="${careInfo.careTime }">
+						<input type="text"  style="width: 145px"  name="careTime"
+							value="${careUpdBean.care_time }">
 						&nbsp;
 					</td>
 					<td bgcolor="#FFFDF0" style="width: 13%">
@@ -96,7 +97,7 @@
 					</td>
 					<td colspan="3" bgcolor="#FFFFFF">
 						<input type="text"  style="width: 145px" name="careNexttime"
-							value="${careInfo.careNexttime }" check_str="下次关怀时间"
+							value="${careUpdBean.care_nexttime }" check_str="下次关怀时间"
 							readonly="readonly" id="careNexttime"
 							onclick="WdatePicker({el:careNexttime,dateFmt:'yyyy-MM-dd HH:mm:ss '})">
 						&nbsp;
@@ -111,7 +112,7 @@
 					</td>
 					<td colspan="3" bgcolor="#FFFFFF">
 						<input type="text"  style="width: 145px"  maxlength="20" name="carePeople"
-							value="${careInfo.carePeople }">
+							value="${careUpdBean.care_people }">
 						&nbsp;
 					</td>
 					<td bgcolor="#FFFDF0" style="width: 13%">
@@ -120,7 +121,7 @@
 						</div>
 					</td>
 					<td colspan="3" bgcolor="#FFFFFF">
-						<select name="careWay" value="${careInfo.careWay }"
+						<select name="careWay" value="${careUpdBean.care_way }"
 							style="width: 145px">
 							<option 
 								selected="selected" >
@@ -152,7 +153,7 @@
 					</td>
 					<td colspan="7" bgcolor="#FFFFFF">
 						<textarea name="careRemark" style="width: 100%; resize: none;"
-							rows="10">${careInfo.careRemark }</textarea>
+							rows="10">${careUpdBean.care_remark }</textarea>
 					</td>
 				</tr>
 			</table>
