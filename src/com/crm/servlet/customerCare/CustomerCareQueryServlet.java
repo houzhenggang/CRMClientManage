@@ -38,30 +38,31 @@ public class CustomerCareQueryServlet extends HttpServlet {
 			}
 		}
 		
+		System.out.println("nowPage - "+nowPage +"\t nowPageStr - "+nowPageStr);
+		
 		List<Map<String, Object>> allData = new ArrayList<>();
-		String idstr = request.getParameter("id");
-		System.out.println(idstr);
+		String idstr = request.getParameter("idcheck");
+		System.out.println("idstr" + idstr);
 
 		try {
 			if(idstr != null && idstr.equals("2")){
-				String type = request.getParameter("queryType");
-				String queryType = request.getParameter("customerInput");
+				String queryType = request.getParameter("queryType");
+				String customerInput = request.getParameter("customerInput");
 				
-				System.out.println(type+"\t"+queryType);
-				if(type.equals("1")){
+				System.out.println("queryType - "+ queryType+"\t customerInput - "+customerInput);
+				if(queryType.equals("1")){
 					int cust_id = Integer.parseInt(queryType);
 					allData = dao.queryCareByCustomer(nowPage,4,cust_id);
-				}else if(type.equals("2")){
-					allData = dao.queryCareByTheme(nowPage,4,queryType);
-				}else if (type.equals("3")){
-					allData = dao.queryCareByCareway(nowPage,4,queryType);
+				}else if(queryType.equals("2")){
+					allData = dao.queryCareByTheme(nowPage,4,customerInput);
+				}else if (queryType.equals("3")){
+					allData = dao.queryCareByCareway(nowPage,4,customerInput);
 				}
-				request.setAttribute("cInput", queryType);
-				request.setAttribute("qType", type);
+				request.setAttribute("queryType", queryType);
+				request.setAttribute("customerInput", customerInput);
 				request.setAttribute("mark", 2);
 			}else{
 	            allData = dao.queryCareOnPage(nowPage, 4);
-	            System.out.println(allData);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -69,6 +70,7 @@ public class CustomerCareQueryServlet extends HttpServlet {
 
 		System.out.println(allData);
 		request.setAttribute("Cares", allData);
+	
 		request.setAttribute("nowPage", dao.getNowPage());
 		request.setAttribute("pageCount", dao.getPageCount());
 		request.setAttribute("rowCount", dao.getRowCount());

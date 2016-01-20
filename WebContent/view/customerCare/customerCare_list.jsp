@@ -114,18 +114,15 @@ if  (cs[1].style.backgroundColor!=clickcolor&&source.id!="nc"){
 	}
 
 	function query(){
-		var query = document.getElementById("queryType").value;
+		var query = document.getElementById("customerInput").value;
 		if(query == null || query == ""){
 			return false;
 		}else{
-			document.forms[0].action="CustomerCareQueryServlet?id=2";
+			document.forms[0].action="CustomerCareQueryServlet?idcheck=2";
 			return true;
 		}
 	}
-	
-	function pageCheck(){
-		
-	}
+
 </script>
   </head>
   
@@ -140,10 +137,10 @@ if  (cs[1].style.backgroundColor!=clickcolor&&source.id!="nc"){
                 <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
           <tr>
             <td class="STYLE4" align="center">&nbsp;&nbsp;请输入查询内容：
-               <input id="queryType" type="text" name="customerInput" style="width: 290px" value="${requestScope.cInput }"/>
+               <input id="customerInput" type="text" name="customerInput" style="width: 290px"/>
             </td>
             <td class="STYLE4">&nbsp;&nbsp;请选择查询方式：
-                <select name="queryType" style="width: 100px">
+                <select name="queryType" style="width: 100px" >
       					<option value="1" >关怀客户</option>
      				 	<option value="2" >关怀主题</option>
      				 	<option value="3" >关怀方式</option>
@@ -241,7 +238,7 @@ if  (cs[1].style.backgroundColor!=clickcolor&&source.id!="nc"){
                   <td width="45">
                   <c:choose>
                      <c:when test="${requestScope.mark==2 }"> 
-                     <a href="CustomerCareQueryServlet?id=2&queryType=${requestScope.type }&customerInput=${requestScope.queryType}&pagenum=${requestScope.nowPage+1 }">
+                     <a href="CustomerCareQueryServlet?idcheck=2&queryType=${requestScope.queryType }&customerInput=${requestScope.customerInput}&pagenum=${requestScope.nowPage+1 }">
                      <img src="<%=basePath%>resource/images/next.gif" width="43" height="15" />
                      </a>
                      </c:when>
