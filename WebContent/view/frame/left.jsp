@@ -661,7 +661,7 @@ document.write("<div id=tt style=height:"+he+";overflow:hidden>")
 																					onmouseover="this.style.borderStyle='solid';this.style.borderWidth='1';borderColor='#7bc4d3'; "
 																					onmouseout="this.style.borderStyle='none'">
 																					<span class="STYLE3"><a
-																						href="<%=basePath%>servlet/UserAddServlet" target="mainFrame">添加员工</a>
+																						href="view/user/user_add.jsp" target="mainFrame">添加员工</a>
 																					</span>
 																				</td>
 																			</tr>

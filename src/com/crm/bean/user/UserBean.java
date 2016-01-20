@@ -1,9 +1,9 @@
 package com.crm.bean.user;
 
 public class UserBean {
-	private int user_id ;
-	private int department_id ;
-	private int role_id ;
+	private int    user_id ;
+	private int    department_id ;
+	private int    role_id ;
 	private String user_name ;
 	private String user_sex ;
 	private String user_mobile ;

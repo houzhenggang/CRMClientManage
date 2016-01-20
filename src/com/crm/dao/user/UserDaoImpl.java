@@ -12,9 +12,13 @@ public class UserDaoImpl extends BaseDao implements UserDao{
 	@Override
 	public int addUser(UserBean uBean) throws Exception {
 		StringBuilder sql = new StringBuilder()
-				.append(" INSERT INTO user_info ")
+				.append(" INSERT INTO user_info(Department_id,Role_id,User_name,User_sex, ")
+				.append(" User_mobile,User_age,User_address,User_num, ")
+				.append(" User_pw,User_tel,User_idnum,User_email,  ")
+				.append(" User_addtime,User_addman,User_intest,User_diploma, ")
+				.append(" User_bankcard,User_nation,Is_married) ")
 				.append(" VALUES£¨?,?,?,?,?,?,?,?,?,?,")
-				.append(" ?,?,to_date(?,'yyyy-MM-dd HH:mm:ss'),?,?,?,?,?,?) ")
+				.append(" ?,?,to_date(?,'yyyy-mm-dd,hh24:mi:ss'),?,?,?,?,?,?) ")
 				;
 		return executeUpdate(sql.toString(),
 				uBean.getDepartment_id(),

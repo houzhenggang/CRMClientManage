@@ -43,12 +43,7 @@ public class UserAddServlet extends HttpServlet {
 		String userAddress= request.getParameter("userAddress");
 		String userAddman= request.getParameter("userAddman");
 		String userEmail=request.getParameter("userEmail");
-        
-		System.out.println(userSex+"--"+userDiploma+"--"+isMarried+"--"+departmentId);
-		System.out.println(dep_id+ rid+ userName+ userMobile);
-		System.out.println(uage+ userAddress+ userNum+ userPw+ userTel+ userIdnum);
-		System.out.println(userEmail+ userAddtime+ userAddman+ userIntest);
-		System.out.println(userBankcard+ userNation);		
+        		
 		UserBean userBean = new UserBean(dep_id, rid, userName, userSex, userMobile,
 				uage, userAddress, userNum, userPw, userTel, userIdnum,
 				userEmail, userAddtime, userAddman, userIntest, userDiploma,

@@ -94,9 +94,7 @@ for(i=0;i<cs.length;i++){
 }
 </script>
 <script type="text/javascript">
-    function add(){
-    	location.href="view/user/user_add.jsp";
-    }
+
     function del(user_id){
     	var flag = window.confirm("您确定要删除第"+user_id+"个员工吗？");
     	if(flag){
@@ -135,10 +133,7 @@ for(i=0;i<cs.length;i++){
    				</td>
             <td class="STYLE4">&nbsp;&nbsp;
             <input  type="submit" value="查询" style="width:50px"/>
-            </td>      
-            <td class="STYLE4">&nbsp;&nbsp;
-            <input type="button" value="添加" style="width:50px" onclick="add()"/>
-            </td>       
+            </td>           
           </tr>
         </table></td>
         <td width="16"><img src="<%=basePath%>resource/images/tab_07.gif" width="16" height="30" /></td>
