@@ -7,7 +7,7 @@ public class UserBean {
 	private String user_name ;
 	private String user_sex ;
 	private String user_mobile ;
-	private String user_age ;
+	private int    user_age ;
 	private String user_address ;
 	private String user_num ;
 	private String user_pw ;
@@ -29,8 +29,36 @@ public class UserBean {
 		super();
 	}
 
+	//user_info表插入新数据时使用
+	public UserBean(int department_id, int role_id, String user_name, String user_sex, String user_mobile,
+			int user_age, String user_address, String user_num, String user_pw, String user_tel, String user_idnum,
+			String user_email, String user_addtime, String user_addman, String user_intest, String user_diploma,
+			String user_bankcard, String user_nation, String is_married) {
+		super();
+		this.department_id = department_id;
+		this.role_id = role_id;
+		this.user_name = user_name;
+		this.user_sex = user_sex;
+		this.user_mobile = user_mobile;
+		this.user_age = user_age;
+		this.user_address = user_address;
+		this.user_num = user_num;
+		this.user_pw = user_pw;
+		this.user_tel = user_tel;
+		this.user_idnum = user_idnum;
+		this.user_email = user_email;
+		this.user_addtime = user_addtime;
+		this.user_addman = user_addman;
+		this.user_intest = user_intest;
+		this.user_diploma = user_diploma;
+		this.user_bankcard = user_bankcard;
+		this.user_nation = user_nation;
+		this.is_married = is_married;
+	}
+
+    //修改更新user_info表信息时使用
 	public UserBean(int user_id, int department_id, int role_id, String user_name, String user_sex, String user_mobile,
-			String user_age, String user_address, String user_num, String user_pw, String user_tel, String user_idnum,
+			int user_age, String user_address, String user_num, String user_pw, String user_tel, String user_idnum,
 			String user_email, String user_addtime, String user_addman, String user_changetime, String user_changeman,
 			String user_intest, String user_diploma, String user_bankcard, String user_nation, String is_married) {
 		super();
@@ -106,11 +134,11 @@ public class UserBean {
 		this.user_mobile = user_mobile;
 	}
 
-	public String getUser_age() {
+	public int getUser_age() {
 		return user_age;
 	}
 
-	public void setUser_age(String user_age) {
+	public void setUser_age(int user_age) {
 		this.user_age = user_age;
 	}
 

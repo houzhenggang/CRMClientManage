@@ -14,21 +14,20 @@ public class UserDaoImpl extends BaseDao implements UserDao{
 		StringBuilder sql = new StringBuilder()
 				.append(" INSERT INTO user_info ")
 				.append(" VALUES£¨?,?,?,?,?,?,?,?,?,?,")
-				.append(" ?,to_date(?,'yyyy-mm-dd'),?,to_date(?,'yyyy-mm-dd'),?,?,?,?,?,?, ")
-				.append(" ?,?,? ")
+				.append(" ?,?,to_date(?,'yyyy-MM-dd HH:mm:ss'),?,?,?,?,?,?) ")
 				;
 		return executeUpdate(sql.toString(),
+				uBean.getDepartment_id(),
 				uBean.getRole_id(),uBean.getUser_name(),
 				uBean.getUser_sex(),uBean.getUser_mobile(),
 				uBean.getUser_age(),uBean.getUser_address(),
 				uBean.getUser_num(),uBean.getUser_pw(),
 				uBean.getUser_tel(),uBean.getUser_idnum(),
 				uBean.getUser_email(),uBean.getUser_addtime(),
-				uBean.getUser_addman(),uBean.getUser_changetime(),
-				uBean.getUser_changeman(),uBean.getUser_intest(),
+				uBean.getUser_addman(),uBean.getUser_intest(),
 				uBean.getUser_diploma(),uBean.getUser_bankcard(),
-				uBean.getUser_nation(),uBean.getIs_married(),
-				uBean.getIs_used());
+				uBean.getUser_nation(),uBean.getIs_married()
+				);
 	}
 
 	@Override

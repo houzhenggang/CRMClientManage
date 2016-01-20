@@ -39,7 +39,7 @@ function checkForm(){
 	</head>
 
 	<body>
-		<form name="form1" onsubmit="return validator()" method="post" name="form2" onsubmit="return checkForm('form2');">
+		<form name="form1" onsubmit="return validator(this)" method="post" name="form2" onsubmit="return checkForm('form2');">
 			<table class=editTable cellSpacing=1 cellPadding=0 width="100%"
 				align=center border=0>
 				<tr class=editHeaderTr>
@@ -195,7 +195,6 @@ function checkForm(){
 						&nbsp;
 					</td>
 				</tr>
-
 
 				<tr>
 					<td bgcolor="#FFFDF0">
