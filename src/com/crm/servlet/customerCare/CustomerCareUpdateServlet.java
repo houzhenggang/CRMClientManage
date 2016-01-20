@@ -27,14 +27,14 @@ public class CustomerCareUpdateServlet extends HttpServlet {
 		String  customerId= request.getParameter("customerId");
 		int cusId = Integer.parseInt(customerId);
 		
-		String caretime = request.getParameter("careTime");
+		String caretime = request.getParameter("careTime").substring(0, 10);
 		String  careNexttime= request.getParameter("careNexttime").substring(0, 10);
 		String  careWay= request.getParameter("careWay");
 		String  careRemark= request.getParameter("careRemark");
 		String  carePeople= request.getParameter("carePeople");
 		String  careTheme= request.getParameter("careTheme");
 		
-		System.out.println(careId+"---"+caretime+cusId+careNexttime+careWay+careRemark+carePeople+careTheme);
+		System.out.println(careId+"***"+cusId+"---"+caretime+careNexttime+"---"+careWay+"---"+careRemark+"---"+carePeople+"---"+careTheme);
 		CustomerCareDao dao = CustomerCareFactory.getInstance();
 		CustomerCareBean careBean = new CustomerCareBean(careId,cusId,careTheme,careWay,caretime,careRemark,careNexttime,carePeople);
 		String path = "CustomerCareQueryServlet";

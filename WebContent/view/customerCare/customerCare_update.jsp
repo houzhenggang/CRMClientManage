@@ -34,6 +34,7 @@
 <script type="text/javascript">
     function checkForm(){
     	document.forms[0].action="CustomerCareUpdateServlet?care_id=" + ${careUpdBean.care_id};
+    }
 </script>
 
 	</head>

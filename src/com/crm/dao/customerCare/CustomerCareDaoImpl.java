@@ -47,14 +47,15 @@ public class CustomerCareDaoImpl extends BaseDao implements CustomerCareDao{
 				.append(" set  customer_id=?, ")
 				.append(" care_theme=?, care_way=?, ")
 				.append(" care_remark=?, ")
-				.append(" care_nexttime=?,care_people=? ")
+				.append(" care_nexttime=to_date(?,'yyyy-mm-dd'),care_people=? ")
 				.append(" where care_id=? ")
 				;
 				
 		return executeUpdate(sql.toString(), careBean.getCustomer_id(),
 				careBean.getCare_theme(),careBean.getCare_way(),
 				careBean.getCare_remark(),
-				careBean.getCare_nexttime(),careBean.getCare_people(),
+				careBean.getCare_nexttime(),
+				careBean.getCare_people(),
 				careBean.getCare_id());
 	}
 
