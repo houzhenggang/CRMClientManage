@@ -3,6 +3,7 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -104,7 +105,8 @@ for(i=0;i<cs.length;i++){
         <td width="12" height="30"><img src="<%=basePath%>resource/images/tab_03.gif" width="12" height="30" /></td>
                 <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
           <tr>
-            <td class="STYLE4" align="center">&nbsp;&nbsp;请输入查询内容：<input type="text" name="userName" style="width: 290px"/></td>
+            <td class="STYLE4" align="center">&nbsp;&nbsp;请输入查询内容：
+            <input type="text" name="userName" style="width: 290px"/></td>
             <td class="STYLE4">&nbsp;&nbsp;请选择查询方式：<select name="queryType" style="width: 100px">
       					<option  value="1">员工姓名</option>
      				 	<option  value="2">部门名称</option>
@@ -144,48 +146,28 @@ for(i=0;i<cs.length;i++){
           </tr>
           
          <!-- 输出用户信息 -->
-    
+         <c:forEach items="${requestScope.allData }" var="oneUser">
           <tr>
-            <td height="20" bgcolor="#FFFFFF" style="width: 3%"><div align="center" class="STYLE1"><div align="center">1 </div></div></td>
-            <td height="20" bgcolor="#FFFFFF" style="width: 5%"><div align="center"><span class="STYLE1"> 张三</span></div></td>
-            <td height="20" bgcolor="#FFFFFF" style="width: 3%"><div align="center"><span class="STYLE1"> 男 </span></div></td>
-            <td height="20" bgcolor="#FFFFFF" style="width: 3%"><div align="center"><span class="STYLE1"> 31 </span></div></td>
-	    	<td height="20" bgcolor="#FFFFFF" style="width: 3%"><div align="center"><span class="STYLE1"> 汉 </span></div></td>
-	  	  	<td height="20" bgcolor="#FFFFFF" style="width: 5%"><div align="center"><span class="STYLE1"> 销售部 </span></div></td>
-	    	<td height="20" bgcolor="#FFFFFF" style="width: 5%"><div align="center"><span class="STYLE1"> 管理员 </span></div></td>
-            <td height="20" bgcolor="#FFFFFF" style="width: 5%"><div align="center"><span class="STYLE1">本科 </span></div></td>
-            <td height="20" bgcolor="#FFFFFF" style="width: 5%"><div align="center"><span class="STYLE1"> 末婚 </span></div></td>
-	    	<td height="20" bgcolor="#FFFFFF" style="width: 15%"><div align="center"><span class="STYLE1">大连市沙河口区 </span></div></td>
-   	    	<td height="20" bgcolor="#FFFFFF" style="width: 10%"><div align="center"><span class="STYLE1"> 13525452584 </span></div></td>
-            <td height="20" bgcolor="#FFFFFF" style="width: 9%"><div align="center"><span class="STYLE1">52000112</span></div></td>
-            <td height="20" bgcolor="#FFFFFF" style="width:1 5%"><div align="center"><span class="STYLE1">3797687@qq.com</span></div></td>
+            <td height="20" bgcolor="#FFFFFF" style="width: 3%"><div align="center" class="STYLE1"><div align="center">${oneUser.role_id } </div></div></td>
+            <td height="20" bgcolor="#FFFFFF" style="width: 5%"><div align="center"><span class="STYLE1"> ${oneUser.user_name}</span></div></td>
+            <td height="20" bgcolor="#FFFFFF" style="width: 3%"><div align="center"><span class="STYLE1">${oneUser.user_sex}</span></div></td>
+            <td height="20" bgcolor="#FFFFFF" style="width: 3%"><div align="center"><span class="STYLE1">${oneUser.user_age}</span></div></td>
+	    	<td height="20" bgcolor="#FFFFFF" style="width: 3%"><div align="center"><span class="STYLE1">${oneUser.user_nation}</span></div></td>
+	  	  	<td height="20" bgcolor="#FFFFFF" style="width: 5%"><div align="center"><span class="STYLE1"> ${oneUser.department_name } </span></div></td>
+	    	<td height="20" bgcolor="#FFFFFF" style="width: 5%"><div align="center"><span class="STYLE1"> ${oneUser.role_name } </span></div></td>
+            <td height="20" bgcolor="#FFFFFF" style="width: 5%"><div align="center"><span class="STYLE1">${oneUser.user_diploma} </span></div></td>
+            <td height="20" bgcolor="#FFFFFF" style="width: 5%"><div align="center"><span class="STYLE1"> ${oneUser.is_married } </span></div></td>
+	    	<td height="20" bgcolor="#FFFFFF" style="width: 15%"><div align="center"><span class="STYLE1">${oneUser.user_address } </span></div></td>
+   	    	<td height="20" bgcolor="#FFFFFF" style="width: 10%"><div align="center"><span class="STYLE1"> ${oneUser.user_mobile }</span></div></td>
+            <td height="20" bgcolor="#FFFFFF" style="width: 9%"><div align="center"><span class="STYLE1">${oneUser.user_tel }</span></div></td>
+            <td height="20" bgcolor="#FFFFFF" style="width:1 5%"><div align="center"><span class="STYLE1">${oneUser.user_email }</span></div></td>
             <td height="20" bgcolor="#FFFFFF" style="width: 14%"><div align="center"><span class="STYLE4">
             <img  src="<%=basePath%>resource/images/edt.gif" width="16" height="16" />
             <a href="<%=basePath %>/view/user/user_update.jsp">编辑</a>&nbsp;<img src="<%=basePath%>resource/images/edt.gif" width="16" height="16" />
             <a href="<%=basePath %>/view/user/user_more.jsp">详情</a>&nbsp;<img  src="<%=basePath%>resource/images/del.gif" width="16" height="16" />
             <a href="<%=basePath %>/view/user/user_save.jsp">删除</a></span></div></td>
           </tr>
-          
-           <tr>
-            <td height="20" bgcolor="#FFFFFF" style="width: 3%"><div align="center" class="STYLE1"><div align="center">2 </div></div></td>
-            <td height="20" bgcolor="#FFFFFF" style="width: 5%"><div align="center"><span class="STYLE1"> 李四</span></div></td>
-            <td height="20" bgcolor="#FFFFFF" style="width: 3%"><div align="center"><span class="STYLE1"> 男 </span></div></td>
-            <td height="20" bgcolor="#FFFFFF" style="width: 3%"><div align="center"><span class="STYLE1"> 31 </span></div></td>
-	    	<td height="20" bgcolor="#FFFFFF" style="width: 3%"><div align="center"><span class="STYLE1"> 汉 </span></div></td>
-	  	  	<td height="20" bgcolor="#FFFFFF" style="width: 5%"><div align="center"><span class="STYLE1"> 销售部 </span></div></td>
-	    	<td height="20" bgcolor="#FFFFFF" style="width: 5%"><div align="center"><span class="STYLE1"> 管理员 </span></div></td>
-            <td height="20" bgcolor="#FFFFFF" style="width: 5%"><div align="center"><span class="STYLE1">本科 </span></div></td>
-            <td height="20" bgcolor="#FFFFFF" style="width: 5%"><div align="center"><span class="STYLE1"> 末婚 </span></div></td>
-	    	<td height="20" bgcolor="#FFFFFF" style="width: 15%"><div align="center"><span class="STYLE1">大连市沙河口区 </span></div></td>
-   	    	<td height="20" bgcolor="#FFFFFF" style="width: 10%"><div align="center"><span class="STYLE1"> 13525452584 </span></div></td>
-            <td height="20" bgcolor="#FFFFFF" style="width: 9%"><div align="center"><span class="STYLE1">52000112</span></div></td>
-            <td height="20" bgcolor="#FFFFFF" style="width:1 5%"><div align="center"><span class="STYLE1">3797687@qq.com</span></div></td>
-            <td height="20" bgcolor="#FFFFFF" style="width: 14%"><div align="center"><span class="STYLE4">
-            <img  src="<%=basePath%>resource/images/edt.gif" width="16" height="16" />
-            <a href="<%=basePath %>/view/user/user_update.jsp">编辑</a>&nbsp;<img src="<%=basePath%>resource/images/edt.gif" width="16" height="16" />
-            <a href="<%=basePath %>/view/user/user_more.jsp">详情</a>&nbsp;<img  src="<%=basePath%>resource/images/del.gif" width="16" height="16" />
-            <a href="<%=basePath %>/view/user/user_list.jsp">删除</a></span></div></td>
-          </tr>
+         </c:forEach>
           
            <!-- 输出用户信息结束 -->
            <!-- 没有用户信息，输出以下内容 -->
@@ -208,7 +190,7 @@ for(i=0;i<cs.length;i++){
         <td width="12" height="35"><img src="<%=basePath%>resource/images/tab_18.gif" width="12" height="35" /></td>
         <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
           <tr>
-            <td class="STYLE4">&nbsp;&nbsp;共有 7 条记录，当前第 1/2 页</td>
+            <td class="STYLE4">&nbsp;&nbsp;共有 ${rowCount}条记录，当前第 ${nowPage }/${pageCount } 页</td>
             <td><table border="0" align="right" cellpadding="0" cellspacing="0">
                 <tr>
                   <td width="40"><img src="<%=basePath%>resource/images/first.gif" width="37" height="15" /></td>

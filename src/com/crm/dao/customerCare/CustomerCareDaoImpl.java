@@ -36,6 +36,7 @@ public class CustomerCareDaoImpl extends BaseDao implements CustomerCareDao{
 	public List<Map<String, Object>> queryCareOnPage(int nowPage, int pageSize) throws Exception {
 		StringBuilder sql = new StringBuilder()
 				.append(" select * from customer_care ")
+				.append(" order by care_id ")
 				;
 		return queryOnPage(sql.toString(), nowPage, pageSize);
 	}
