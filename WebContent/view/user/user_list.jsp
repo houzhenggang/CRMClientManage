@@ -100,6 +100,14 @@ for(i=0;i<cs.length;i++){
     		location.href="UserDelServlet?user_id=" + user_id;
     	}
     }
+    
+    function upd(user_id){
+    	location.href="UserQueryByIdServlet?qid=1&user_id=" + user_id;
+    }
+    function more(user_id){
+    	location.href="UserQueryByIdServlet?qid=2&user_id=" + user_id;
+    }
+
 </script>
 
 </head>
@@ -171,8 +179,8 @@ for(i=0;i<cs.length;i++){
             <td height="20" bgcolor="#FFFFFF" style="width:1 5%"><div align="center"><span class="STYLE1">${oneUser.user_email }</span></div></td>
             <td height="20" bgcolor="#FFFFFF" style="width: 14%"><div align="center"><span class="STYLE4">
             <img  src="<%=basePath%>resource/images/edt.gif" width="16" height="16" />
-            <a href="<%=basePath %>/view/user/user_update.jsp">编辑</a>&nbsp;<img src="<%=basePath%>resource/images/edt.gif" width="16" height="16" />
-            <a href="<%=basePath %>/view/user/user_more.jsp">详情</a>&nbsp;<img  src="<%=basePath%>resource/images/del.gif" width="16" height="16" />
+            <a href="javaScript:upd(${oneUser.user_id })">编辑</a>&nbsp;<img src="<%=basePath%>resource/images/edt.gif" width="16" height="16" />
+            <a href="javaScript:more(${oneUser.user_id })">详情</a>&nbsp;<img  src="<%=basePath%>resource/images/del.gif" width="16" height="16" />
             <a href="javascript:del(${oneUser.user_id })">删除</a></span></div></td>
           </tr>
          </c:forEach>

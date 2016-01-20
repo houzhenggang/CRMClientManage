@@ -6,7 +6,7 @@
 			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 %>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 	<head>
@@ -30,18 +30,16 @@
 	</head>
 
 	<body>
-		<form action="<%=basePath%>servlet/UserUpdateServlet" method="post" name="form2" onsubmit="return validator(this)" 
->
-			<table class=editTable cellSpacing=1 cellPadding=0 width="100%"
-				align=center border=0>
+		<form method="post" name="form2" onsubmit="return validator(this)" >
+			<table class=editTable cellSpacing=1 cellPadding=0 width="100%" align=center border=0>
+			<c:forEach items="${requestScope.allData }" var="one">
 				<tr class=editHeaderTr>
 					<td class=editHeaderTd colSpan=7>
 						请修改用户的详细信息
 						<input type="hidden" name="userId" value="1234"
 							readonly="readonly">
 					</td>
-				</tr>
-
+				</tr> 
 				<tr>
 					<td bgcolor="#FFFDF0">
 						<div align="center">
@@ -49,7 +47,7 @@
 						</div>
 					</td>
 					<td colspan="3" bgcolor="#FFFFFF">
-						<input type="text" style="width: 145px" name="userName" disabled="disabled" value="张三"
+						<input type="text" style="width: 145px" name="userName" disabled="disabled" value="${one.user_name }"
 							readonly="readonly">
 						&nbsp;
 					</td>
@@ -59,7 +57,7 @@
 						</div>
 					</td>
 					<td colspan="3" bgcolor="#FFFFFF">
-						<input type="text"  style="width: 145px" name="userAge" maxlength="2"  valid="required|isNumber"  errmsg="员工年龄不能为空!|请输入正确的年龄!" value="31">
+						<input type="text"  style="width: 145px" name="userAge" maxlength="2"  valid="required|isNumber"  errmsg="员工年龄不能为空!|请输入正确的年龄!" value="${one.user_age }">
 						&nbsp;
 					</td>
 				</tr>
@@ -87,7 +85,7 @@
 					</td>
 					<td colspan="3" bgcolor="#FFFFFF">
 						<input type="text"  style="width: 145px" name="userNation"
-							value="汉族">
+							value="${one.user_nation }">
 						&nbsp;
 					</td>
 				</tr>
@@ -166,7 +164,7 @@
 
 					<td colspan="3" bgcolor="#FFFFFF">
 						<select name="roleId"  disabled="disabled" style="width: 145px">
-
+                   
 						<!--循环输出角色  -->
 							<option value="1" selected="selected" >管理员</option>
 							<option value="2" >员工</option>
@@ -182,7 +180,7 @@
 						</div>
 					</td>
 					<td colspan="3" bgcolor="#FFFFFF">
-						<input type="text"  style="width: 145px"     valid="isPhone"   errmsg="请输入正确的座机号码!" name="userTel" value="52000112">
+						<input type="text"  style="width: 145px"     valid="isPhone"   errmsg="请输入正确的座机号码!" name="userTel" value="${one.user_tel }">
 						&nbsp;
 					</td>
 					<td bgcolor="#FFFDF0">
@@ -192,7 +190,7 @@
 					</td>
 					<td colspan="3" bgcolor="#FFFFFF">
 						<input type="text"  style="width: 145px"  maxlength="50"  name="userIntest"
-							value="肉骨粉">
+							value="${one.user_intest }">
 						&nbsp;
 					</td>
 				</tr>
@@ -205,7 +203,7 @@
 					</td>
 					<td colspan="3" bgcolor="#FFFFFF">
 						<input type="text" style="width: 145px"  valid="isNumber"   errmsg="请输入正确的工资卡号!"  maxlength="20"   name="userBankcard"
-							value="500234154545745474">
+							value="${one.user_bankcard }">
 						&nbsp;
 					</td>
 					<td bgcolor="#FFFDF0">
@@ -215,7 +213,7 @@
 					</td>
 					<td colspan="3" bgcolor="#FFFFFF">
 						<input type="text"  style="width: 145px" valid="regexp"  regexp="^1[3|4|5|8][0-9]\d{8}$"   errmsg="请输入正确的手机号码!" name="userMobile"
-							value="13525452584">
+							value="${one.user_mobile }">
 						&nbsp;
 					</td>
 
@@ -228,7 +226,7 @@
 						</div>
 					</td>
 					<td colspan="3" bgcolor="#FFFFFF">
-						<input type="text"  style="width: 145px"  valid="isIdCard"   errmsg="请输入正确的身份证号码!" name="userIdnum" value="500234154545745474">
+						<input type="text"  style="width: 145px"  valid="isIdCard"   errmsg="请输入正确的身份证号码!" name="userIdnum" value="${one.user_idnum }">
 						&nbsp;
 					</td>
 					<td bgcolor="#FFFDF0">
@@ -238,7 +236,7 @@
 					</td>
 					<td colspan="3" bgcolor="#FFFFFF">
 						<input type="text"  style="width: 145px" name="userAddtime"
-							disabled="disabled" value="2013-05-25 09:37:18">
+							disabled="disabled" value="${one.user_addtime }">
 					</td>
 				</tr>
 				<tr>
@@ -249,7 +247,7 @@
 					</td>
 					<td colspan="3" bgcolor="#FFFFFF">
 						<input type="text"  style="width: 145px"  maxlength="10" name="userAddman"
-							disabled="disabled" value="李四">
+							disabled="disabled" value="${one.user_addman }">
 						&nbsp;
 					</td>
 					<td bgcolor="#FFFDF0">
@@ -261,20 +259,19 @@
 					</td>
 					<td colspan="3" bgcolor="#FFFFFF">
 						<input type="text" name="userChangeman"
-							style="width: 145px"    maxlength="20"value="admin">
+							style="width: 145px"    maxlength="20" value="${one.user_changeman }">
 						&nbsp;
 					</td>
 				</tr>
 
 				<tr>
-
 					<td bgcolor="#FFFDF0">
 						<div align="center">
 							E_mail：
 						</div>
 					</td>
 					<td colspan="3" bgcolor="#FFFFFF">
-						<input type="text" style="width: 145px"  maxlength="50" name="userEmail" value="23432@qq.com">
+						<input type="text" style="width: 145px"  maxlength="50" name="userEmail" value="${one.user_email }">
 						&nbsp;
 					</td>
 					<td bgcolor="#FFFDF0">
@@ -284,11 +281,11 @@
 					</td>
 					<td colspan="3" bgcolor="#FFFFFF">
 						<input type="text" style="width: 145px"  maxlength="50"  name="userAddress"
-							value="大连市沙河口区">
+							value="${one.user_address }">
 						&nbsp;
 					</td>
 				</tr>
-
+               </c:forEach>
 			</table>
 			<table class=editTable cellSpacing=1 cellPadding=0 width="100%"
 				align=center border=0>

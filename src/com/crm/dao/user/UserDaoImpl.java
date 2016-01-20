@@ -1,5 +1,6 @@
 package com.crm.dao.user;
 
+import java.sql.ResultSet;
 import java.util.List;
 import java.util.Map;
 
@@ -48,6 +49,20 @@ public class UserDaoImpl extends BaseDao implements UserDao{
 	public int delUser(int user_id) throws Exception {
 		
 		return executeUpdate(" delete from user_info where user_id=? ", user_id);
+	}
+
+	@Override
+	public List<Map<String, Object>> queryUserById(int user_id) throws Exception {
+		StringBuilder sql = new StringBuilder()
+				.append("  select * from( ")
+				.append("  select urole.role_name,d.department_name,uinfo.*   ")
+				.append("    from user_role urole,department_info d ,(  ")
+				.append("         select * from user_info ) uinfo   ")
+				.append("   where urole.role_id = uinfo.role_id   ")
+				.append("     and d.department_id = uinfo.department_id  ")
+				.append("   )mm where mm.user_id=?  ")
+				;
+		return executeQueryByMap(sql.toString(), user_id);
 	}
 
 }
