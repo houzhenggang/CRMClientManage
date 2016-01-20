@@ -44,4 +44,10 @@ public class UserDaoImpl extends BaseDao implements UserDao{
 		return queryOnPage(sql.toString(), nowPage, pageSize);
 	}
 
+	@Override
+	public int delUser(int user_id) throws Exception {
+		
+		return executeUpdate(" delete from user_info where user_id=? ", user_id);
+	}
+
 }

@@ -9,6 +9,8 @@ public interface UserDao {
 
 	public int addUser(UserBean uBean) throws Exception;
 	
+	public int delUser(int user_id) throws Exception;
+	
 	public List<Map<String, Object>> queryUserOnPage(int nowPage, int pageSize) throws Exception;
 	public int getRowCount();
 	public int getPageSize();

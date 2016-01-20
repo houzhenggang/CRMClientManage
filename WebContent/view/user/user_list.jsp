@@ -93,6 +93,14 @@ for(i=0;i<cs.length;i++){
 }
 }
 </script>
+<script type="text/javascript">
+    function del(user_id){
+    	var flag = window.confirm("您确定要删除第"+user_id+"个员工吗？");
+    	if(flag){
+    		location.href="UserDelServlet?user_id=" + user_id;
+    	}
+    }
+</script>
 
 </head>
 <body>
@@ -165,7 +173,7 @@ for(i=0;i<cs.length;i++){
             <img  src="<%=basePath%>resource/images/edt.gif" width="16" height="16" />
             <a href="<%=basePath %>/view/user/user_update.jsp">编辑</a>&nbsp;<img src="<%=basePath%>resource/images/edt.gif" width="16" height="16" />
             <a href="<%=basePath %>/view/user/user_more.jsp">详情</a>&nbsp;<img  src="<%=basePath%>resource/images/del.gif" width="16" height="16" />
-            <a href="<%=basePath %>/view/user/user_save.jsp">删除</a></span></div></td>
+            <a href="javascript:del(${oneUser.user_id })">删除</a></span></div></td>
           </tr>
          </c:forEach>
           
