@@ -66,18 +66,29 @@ public class CustomerCareDaoImpl extends BaseDao implements CustomerCareDao{
 		return executeQuery("select * from customer_care where care_id=? ", care_id);
 	}
 
-	public List<Map<String, Object>> queryCareByTheme(int nowPage,int pageSize,String theme) throws Exception{
+	public List<Map<String, Object>> queryCareByTheme(int nowPage,int pageSize,String theme) 
+			throws Exception{
+		StringBuilder sql = new StringBuilder()
+				.append(" select * from customer_care  ")
+				.append(" where care_theme like '%"+theme+"%'  ")
+				;
 		
-		return queryOnPage(" select * from customer_care where care_theme=? ",nowPage, pageSize,theme);
+		return queryOnPage(sql.toString(),nowPage, pageSize);
 	}
 	
-	public List<Map<String, Object>> queryCareByCustomer(int nowPage,int pageSize,int customer) throws Exception{
+	public List<Map<String, Object>> queryCareByCustomer(int nowPage,int pageSize,int customer) 
+			throws Exception{
 		
 		return queryOnPage(" select * from customer_care where customer_id=? ",nowPage, pageSize,customer);
 	}
 	
-	public List<Map<String, Object>> queryCareByCareway(int nowPage,int pageSize,String careway) throws Exception{
+	public List<Map<String, Object>> queryCareByCareway(int nowPage,int pageSize,String careway) 
+			throws Exception{
+		StringBuilder sql = new StringBuilder()
+				.append(" select * from customer_care  ")
+				.append(" where care_way like '%"+careway+"%'  ")
+				;
 		
-		return queryOnPage(" select * from customer_care where care_way=? ",nowPage, pageSize,careway);
+		return queryOnPage(sql.toString(),nowPage, pageSize);
 	}
 }
