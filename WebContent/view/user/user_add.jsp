@@ -173,8 +173,9 @@ function checkForm(){
 							<option value="1" selected="selected">销售部</option>
 							<option value="2" >财务部</option>
 							<option value="3" >行政部</option>
-							<option value="4" >人事部</option>
-							
+							<c:forEach items="${requestScope.DeptData }" var="onedept">
+							   <option value="${onedept.department_id }" >${onedept.department_name }</option>
+							</c:forEach>
 						</select>
 						&nbsp;
 					</td>
@@ -190,6 +191,9 @@ function checkForm(){
 							<option value="1" selected="selected" >管理员</option>
 							<option value="2" >员工</option>
 							<option value="3" >老板</option>
+							<c:forEach items="${requestScope.roleData }" var="onerole">
+							   <option value="${onerole.role_id }">${onerole.role_name }</option>
+							</c:forEach>
 							
 						</select>
 						&nbsp;

@@ -97,20 +97,24 @@
 						</div>
 					</td>
 					<td colspan="3" bgcolor="#FFFFFF">
-						<select name="userDiploma" style="width: 145px">
-							<option >
+						<select name="userDiploma" style="width: 145px" >
+						<c:set var="diploma" value="${requestScope.user_diploma }"></c:set>
+						
+							<option value=""
+								<c:if test="${diploma=='初中' }"> selected="selected" </c:if> >
 								初中
 							</option>
-							<option selected="selected">
+						
+							<option <c:if test="${diploma=='高中' }">selected="selected" </c:if> >
 								高中
 							</option>
-							<option >
+							<option <c:if test="${diploma=='本科' }">selected="selected" </c:if> >
 								本科
 							</option>
-							<option >
+							<option <c:if test="${diploma=='博士' }">selected="selected" </c:if> >
 								博士
 							</option>
-							<option >
+							<option <c:if test="${diploma=='硕士' }">selected="selected" </c:if> >
 								硕士
 							</option>
 						</select>

@@ -62,7 +62,7 @@ body {
   </head>
   
   <body>
- <form name="from1" action="<%=basePath%>view/frame/main.jsp" method ="post"  onsubmit="return validator(this)" >
+ <form name="from1" method ="post"  onsubmit="return validator(this)" >
    <table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0">
   <tr>
     <td><table width="962" border="0" align="center" cellpadding="0" cellspacing="0">
