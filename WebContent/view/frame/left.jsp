@@ -465,7 +465,7 @@ document.write("<div id=tt style=height:"+he+";overflow:hidden>")
 																					onmouseout="this.style.borderStyle='none'">
 																					<span class="STYLE3"> <a
 																						href="<%=basePath%>servlet/NoticeQueryServlet"
-																						target="mainFrame">公&nbsp;&nbsp;&nbsp;&nbsp;告</a>
+																						target="mainFrame">公&nbsp;&nbsp;告</a>
 																					</span>
 																				</td>
 																			</tr>

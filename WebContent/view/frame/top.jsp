@@ -314,7 +314,7 @@ a {
 									onMouseOver="this.style.backgroundImage='url(../../resource/images/bg.gif)';this.style.borderStyle='solid';this.style.borderWidth='1';borderColor='#a6d0e7'; "
 									onmouseout="this.style.backgroundImage='url()';this.style.borderStyle='none'">
 									<div align="center" class="STYLE3">
-										<a href="<%=basePath %>view/user/user_list.jsp"
+										<a href="<%=path %>/UserQueryServlet"
 											target="mainFrame">员工信息</a>
 									</div>
 								</td>

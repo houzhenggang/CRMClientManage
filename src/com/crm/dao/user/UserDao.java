@@ -20,5 +20,5 @@ public interface UserDao {
 	public int getNowPage() ;
 	public int getPageCount();
 	
-	
+	public List<Map<String, Object>> queryUserByName(int nowpage,int pagesize,String name)throws Exception;
 }

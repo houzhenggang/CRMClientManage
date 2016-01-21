@@ -204,11 +204,13 @@ if  (cs[1].style.backgroundColor!=clickcolor&&source.id!="nc"){
 </c:forEach>
           <!-- 无数据输出以下内容 -->
 		<tr>
+		<c:if test="${requestScope.nowPage==requestScope.pageCount }">
 			<td height="20" bgcolor="#FFFFFF" colspan="21"  align="center">
 				<div align="center">
 					<span class="STYLE1">没有员工相关信息</span>
 				</div>
 			</td>
+		</c:if>
 		</tr>
           
         </table></td>

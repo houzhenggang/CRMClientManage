@@ -109,12 +109,15 @@ for(i=0;i<cs.length;i++){
     	location.href="UserQueryByIdServlet?qid=2&user_id=" + user_id;
     }
 
+    function query(){
+    	document.form1.action="UserQueryServlet?idcheck=2";
+    }
 </script>
 
 </head>
 <body>
 
-<form  action="<%=basePath%>/view/user/user_list.jsp" method="post">
+<form  name="form1" method="post" onsubmit="return query()">
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
 	  <tr>
     <td height="30" background="<%=basePath%>resource/images/tab_05.gif"><table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -123,8 +126,9 @@ for(i=0;i<cs.length;i++){
                 <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
           <tr>
             <td class="STYLE4" align="center">&nbsp;&nbsp;请输入查询内容：
-            <input type="text" name="userName" style="width: 290px"/></td>
-            <td class="STYLE4">&nbsp;&nbsp;请选择查询方式：<select name="queryType" style="width: 100px">
+            <input type="text" name="userInput" style="width: 290px"/></td>
+            <td class="STYLE4">&nbsp;&nbsp;请选择查询方式：
+            <select name="queryType" style="width: 100px">
       					<option  value="1">员工姓名</option>
      				 	<option  value="2">部门名称</option>
      				 	<option  value="3"> 角色名称</option>
@@ -167,7 +171,7 @@ for(i=0;i<cs.length;i++){
          <!-- 输出用户信息 -->
          <c:forEach items="${requestScope.allData }" var="oneUser">
           <tr>
-            <td height="20" bgcolor="#FFFFFF" style="width: 3%"><div align="center" class="STYLE1"><div align="center">${oneUser.role_id } </div></div></td>
+            <td height="20" bgcolor="#FFFFFF" style="width: 3%"><div align="center" class="STYLE1"><div align="center">${oneUser.user_id } </div></div></td>
             <td height="20" bgcolor="#FFFFFF" style="width: 5%"><div align="center"><span class="STYLE1"> ${oneUser.user_name}</span></div></td>
             <td height="20" bgcolor="#FFFFFF" style="width: 3%"><div align="center"><span class="STYLE1">${oneUser.user_sex}</span></div></td>
             <td height="20" bgcolor="#FFFFFF" style="width: 3%"><div align="center"><span class="STYLE1">${oneUser.user_age}</span></div></td>
@@ -191,11 +195,13 @@ for(i=0;i<cs.length;i++){
            <!-- 输出用户信息结束 -->
            <!-- 没有用户信息，输出以下内容 -->
 			<tr>
+			<c:if test="${requestScope.nowPage==requestScope.pageCount }">
 				<td height="20" bgcolor="#FFFFFF" colspan="21"  align="center">
 					<div align="center">
 						<span class="STYLE1">没有员工相关信息</span>
 					</div>
 				</td>
+			</c:if>
 			</tr>
 		
           </table></td>
@@ -212,14 +218,53 @@ for(i=0;i<cs.length;i++){
             <td class="STYLE4">&nbsp;&nbsp;共有 ${rowCount}条记录，当前第 ${nowPage }/${pageCount } 页</td>
             <td><table border="0" align="right" cellpadding="0" cellspacing="0">
                 <tr>
-                  <td width="40"><img src="<%=basePath%>resource/images/first.gif" width="37" height="15" /></td>
-                  <td width="45"><img src="<%=basePath%>resource/images/back.gif" width="43" height="15" /></td>
-                  <td width="45"><img src="<%=basePath%>resource/images/next.gif" width="43" height="15" /></td>
-                  <td width="40"><img src="<%=basePath%>resource/images/last.gif" width="37" height="15" /></td>
-                  <td width="100"><div align="center"><span class="STYLE1">转到第
+                  <td width="40">
+                  <a href="UserQueryServlet?pagenum=1">
+                  <img src="<%=basePath%>resource/images/first.gif" width="37" height="15" />
+                  </a>
+                  </td>
+                  <td width="45">
+                  <a href="UserQueryServlet?pagenum=${requestScope.nowPage-1 }">
+                  <img src="<%=basePath%>resource/images/back.gif" width="43" height="15" />
+                  </a>
+                  </td>
+                  <td width="45">
+                  <c:choose>
+                  <c:when test="${requestScope.mark==2 }">
+                     <a href="UserQueryServlet?idcheck=2&queryType=${queryType}&userInput=${userInput}&pagenum=${requestScope.nowPage+1 }">
+                     <img src="<%=basePath%>resource/images/next.gif" width="37" height="15" />
+                     </a>
+                  </c:when>
+                  <c:otherwise>
+                     <a href="UserQueryServlet?pagenum=${requestScope.nowPage+1 }">
+                      <img src="<%=basePath%>resource/images/next.gif" width="43" height="15" />
+                     </a>
+                  </c:otherwise>
+                  </c:choose>
+                  
+                  </td>
+                  <td width="40">
+                  <c:choose>
+                  <c:when test="${mark==2 }">
+                     <a href="UserQueryServlet?idcheck=2&pagenum=${requestScope.pageCount }">
+                     <img src="<%=basePath%>resource/images/last.gif" width="37" height="15" />
+                     </a>
+                  </c:when>
+                  <c:otherwise>
+                     <a href="UserQueryServlet?pagenum=${requestScope.pageCount }">
+                     <img src="<%=basePath%>resource/images/last.gif" width="37" height="15" />
+                     </a>
+                  </c:otherwise>
+                  </c:choose>
+                  
+                  </td>
+                  <td width="100"><div align="center">
+                  <span class="STYLE1">转到第
                     <input name="textfield" type="text" size="4" style="height:12px; width:20px; border:1px solid #999999;" /> 
                     页 </span></div></td>
-                  <td width="40"><img src="<%=basePath%>resource/images/go.gif" width="37" height="15" /></td>
+                  <td width="40">
+                  <img src="<%=basePath%>resource/images/go.gif" width="37" height="15" />
+                  </td>
                 </tr>
             </table></td>
           </tr>

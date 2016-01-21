@@ -68,4 +68,16 @@ public class UserDaoImpl extends BaseDao implements UserDao{
 		return executeQueryByMap(sql.toString(), user_id);
 	}
 
+	/**
+	 * 模糊查询两种实现方式
+	 */
+	@Override
+	public List<Map<String, Object>> queryUserByName(int nowPage, int pageSize, String name) throws Exception {
+		StringBuilder sql = new StringBuilder()
+				.append(" select * from user_info  ")
+				.append(" where user_name like '%"+name+"%'  ") 
+				;
+		return queryOnPage(sql.toString(), nowPage, pageSize);
+	}
+
 }
