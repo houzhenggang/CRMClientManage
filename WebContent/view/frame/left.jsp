@@ -611,9 +611,10 @@ document.write("<div id=tt style=height:"+he+";overflow:hidden>")
 						</tr>
 
 
-
+<c:if test="${sessionScope.slevel==1 }">
 						<tr >
 							<td>
+							
 								<table width="100%" border="0" cellspacing="0" cellpadding="0">
 									<tr>
 										<td height="23"
@@ -727,8 +728,10 @@ document.write("<div id=tt style=height:"+he+";overflow:hidden>")
 									</tr>
 									
 								</table>
+							
 							</td>
 						</tr>
+</c:if>
 					</table>
 				</td>
 				

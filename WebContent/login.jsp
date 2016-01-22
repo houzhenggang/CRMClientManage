@@ -58,11 +58,25 @@ body {
 			return false; 
 		}	 
 	} 
+	
 	</script>
   </head>
   
   <body>
- <form name="from1" method ="post"  onsubmit="return validator(this)" >
+  <%
+  String name="";
+  Cookie[] cookies = request.getCookies();
+  if(cookies != null){
+	  for(Cookie ck : cookies){
+		  if(ck.getName().equals("name")){
+			  name = ck.getValue();
+			  break;
+		  }
+	  }
+  }
+  
+  %>
+ <form name="from1" action="LoginServlet" method ="post"  onsubmit="return validator(this)">
    <table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0">
   <tr>
     <td><table width="962" border="0" align="center" cellpadding="0" cellspacing="0">
@@ -77,14 +91,15 @@ body {
               <tr>
                 <td width="16%" height="25"><div align="right"><span class="STYLE1">用户</span></div></td>
                 <td width="57%" height="25"><div align="center">
-                  <input type="text" name="userNum"  valid="required|regexp" regexp="^[A-Za-z0-9]+$" errmsg="用户名不能为空!|账号只能由字母和数字组成!"  style="width:105px; height:17px; background-color:#292929; border:solid 1px #7dbad7; font-size:12px; color:#6cd0ff">
+                  <input type="text" id="userNum" name="userNum"  valid="required|regexp" regexp="^[A-Za-z0-9]+$" 
+                    errmsg="用户名不能为空!|账号只能由字母和数字组成!"  style="width:105px; height:17px; background-color:#292929; border:solid 1px #7dbad7; font-size:12px; color:#6cd0ff" value="${requestScope.sname }">
                 </div></td>
                 <td width="27%" height="25">&nbsp;</td>
               </tr>
               <tr>
                 <td height="25"><div align="right"><span class="STYLE1">密码</span></div></td>
                 <td height="25"><div align="center">
-                  <input type="password" name="userPw"   valid="required"  errmsg="密码不能为空!" style="width:105px; height:17px; background-color:#292929; border:solid 1px #7dbad7; font-size:12px; color:#6cd0ff">
+                  <input type="password" id="userPw" name="userPw"   valid="required"  errmsg="密码不能为空!" style="width:105px; height:17px; background-color:#292929; border:solid 1px #7dbad7; font-size:12px; color:#6cd0ff">
                 </div></td>
                 <td height="25"><div align="left"><input type="submit" id="in1" value=""/></div></td>
               </tr>

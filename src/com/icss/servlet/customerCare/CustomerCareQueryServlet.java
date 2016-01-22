@@ -38,11 +38,8 @@ public class CustomerCareQueryServlet extends HttpServlet {
 			}
 		}
 		
-		System.out.println("nowPage - "+nowPage +"\t nowPageStr - "+nowPageStr);
-		
 		List<Map<String, Object>> allData = new ArrayList<>();
 		String idcheck = request.getParameter("idcheck");
-		System.out.println("idstr" + idcheck);
 
 		try {
 			if(idcheck != null && idcheck.equals("2")){

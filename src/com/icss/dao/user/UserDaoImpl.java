@@ -80,4 +80,16 @@ public class UserDaoImpl extends BaseDao implements UserDao{
 		return queryOnPage(sql.toString(), nowPage, pageSize);
 	}
 
+	@Override
+	public ResultSet checkLogin(String usernum, String pwd) throws Exception {
+		StringBuilder sql = new StringBuilder()
+				.append(" select user_name,user_pw,role_id ")
+				.append("   from user_info ")
+				.append("  where user_num=? ")
+				.append("    and user_pw=? ")
+				;
+				
+		return executeQuery(sql.toString(), usernum,pwd);
+	}
+
 }

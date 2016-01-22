@@ -6,6 +6,8 @@ import java.util.Map;
 
 import com.icss.bean.user.UserBean;
 
+import oracle.net.aso.e;
+
 public interface UserDao {
 
 	public int addUser(UserBean uBean) throws Exception;
@@ -21,4 +23,6 @@ public interface UserDao {
 	public int getPageCount();
 	
 	public List<Map<String, Object>> queryUserByName(int nowpage,int pagesize,String name)throws Exception;
+	
+	public ResultSet checkLogin(String usernum,String pwd) throws Exception;
 }

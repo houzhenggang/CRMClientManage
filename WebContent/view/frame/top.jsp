@@ -230,7 +230,7 @@ a {
 							</td>
 							<td width="59%" valign="bottom">
 								<div align="center" class="STYLE1">
-									当前用户：张三</div>
+									当前用户：${sessionScope.sname }</div>
 							</td>
 							<td width="21%">
 								&nbsp;

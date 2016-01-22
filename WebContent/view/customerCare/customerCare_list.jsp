@@ -151,7 +151,9 @@ if  (cs[1].style.backgroundColor!=clickcolor&&source.id!="nc"){
                 <input  type="submit" value="查询" style="width:50px"/>
             </td>           
           <td class="STYLE4">&nbsp;&nbsp;
-          <input  type="button"  onclick="javascript:add()" value="添加"  style="width:50px"/></td>           
+          <c:if test="${sessionScope.slevel==1 }">
+          <input  type="button"  onclick="javascript:add()" value="添加"  style="width:50px"/></td>   
+          </c:if>        
           </tr>
         </table></td>
         <td width="16"><img src="<%=basePath%>resource/images/tab_07.gif" width="16" height="30" /></td>
@@ -176,9 +178,9 @@ if  (cs[1].style.backgroundColor!=clickcolor&&source.id!="nc"){
 	    
 		<td width="10%" height="22" background="<%=basePath%>resource/images/bg2.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">备注</span></div></td>
  	<td width="3%" height="22" background="<%=basePath%>resource/images/bg2.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">关怀人</span></div></td>
-           
+           <c:if test="${sessionScope.slevel==1 }">
 	   		<td  width="4%" height="22" background="<%=basePath%>resource/images/bg2.gif" bgcolor="#FFFFFF" class="STYLE1"><div align="center">基本操作</div></td>
-
+           </c:if>
 </tr>
 
 <!-- 循环输出客户信息 -->
@@ -195,11 +197,13 @@ if  (cs[1].style.backgroundColor!=clickcolor&&source.id!="nc"){
         <td height="20" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">${oneRow.care_nexttime }</span></div></td>
 		<td height="20" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">${oneRow.care_remark } </span></div></td>
 		<td height="20" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">${oneRow.care_people }</span></div></td>
+		<c:if test="${sessionScope.slevel==1 }">
         <td height="20" bgcolor="#FFFFFF"><div align="center"><span class="STYLE4">
         <img src="<%=basePath%>resource/images/edt.gif" width="16" height="16" />
         <a href="javascript:upd(${oneRow.care_id })">编辑</a>&nbsp; &nbsp;
         <img src="<%=basePath%>resource/images/del.gif" width="16" height="16" />
         <a href="javascript:del(${oneRow.care_id })">删除</a></span></div></td>
+        </c:if>
  </tr>
 </c:forEach>
           <!-- 无数据输出以下内容 -->
