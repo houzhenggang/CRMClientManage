@@ -25,4 +25,6 @@ public interface UserDao {
 	public List<Map<String, Object>> queryUserByName(int nowpage,int pagesize,String name)throws Exception;
 	
 	public ResultSet checkLogin(String usernum,String pwd) throws Exception;
+	
+	public ResultSet checkName() throws Exception;
 }

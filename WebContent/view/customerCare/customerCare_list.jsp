@@ -42,6 +42,23 @@ A:hover {
 }
 
 -->
+.suggest_link {
+	background-color: #FFFFFF;
+	padding: 2px 6px 2px 6px;
+}
+
+.suggest_link_over {
+	background-color: #E8F2FE;
+	padding: 2px 6px 2px 6px;
+}
+
+#suggest {
+	position: abslute;
+	background-color: #FFFFFF;
+	text-align: left;
+	border: 1px solid #000000;
+	display: none;
+}
 </style>
 
 <script>
@@ -122,6 +139,71 @@ if  (cs[1].style.backgroundColor!=clickcolor&&source.id!="nc"){
 			return true;
 		}
 	}
+	
+	//Ajax搜索提示功能实现
+	var xmlHttp;
+	function searchSuggest(){
+		if(window.XMLHttpRequest){
+			xmlHttp = new XMLHttpRequest(); //非ie浏览器
+		}else if(window.ActiveObject){
+			xmlHttp = new ActiveObject("Microsoft.XMLHTTP");  //ie浏览器
+		}else{
+			xmlHttp =new ActiveXObject("Msxml2.XMLHTTP");
+		}
+		
+		if(xmlHttp==null){
+			return false;
+		}
+		
+		var str = document.getElementById("customerInput").value;
+		xmlHttp.open("POST","CareSearchSuggest?search="+str, true);
+		
+		xmlHttp.onreadystatechange = processRequest;
+		xmlHttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+		xmlHttp.setRequestHeader("Content-type","text/html;charset=utf-8");
+		xmlHttp.send(null);
+	}
+	
+	function processRequest(){
+		if(xmlHttp.readyState == 4){
+			if(xmlHttp.status==200){
+				var sobj = document.getElementById("suggest");
+				sobj.innerHTML = "";
+				var str= xmlHttp.responseText.split("-"); 
+				
+				var suggestItem = "";
+				if(str.length>0 && str[0].length>0){
+					for(i=0; i<str.length; i++){
+						suggestItem += "<div onmouseover='javascript:suggestOver(this);'"
+						suggestItem += " onmouseout='javascript:suggestOut(this);' "
+						suggestItem += " onclick='javascript:setSearch(this.innerHTML);' "
+						suggestItem += " class='suggest_link'> "+str[i]+"</div>";
+					}
+					
+					sobj.innerHTML = suggestItem;
+					document.getElementById("suggest").style.display = "block";
+				}else{
+					document.getElementById("suggest").style.display = "none";
+				}
+			}
+		}
+	}
+	function suggestOver(obj){
+		obj.className ="suggest_link_over";
+	}
+	function suggestOut(obj){
+		obj.className="suggest_link";
+	}
+	function setSearch(searchStr){
+		document.getElementById("customerInput").value = searchStr;
+		document.getElementById("suggest").style.display = "none";
+	}
+	
+	
+	String.property.trim = function(){
+		var m = this.match(/^\s*(\S+(\s+\S+)*)\s*$/);
+		return (m == null) ? "" : m[1];
+	}
 
 </script>
   </head>
@@ -136,9 +218,7 @@ if  (cs[1].style.backgroundColor!=clickcolor&&source.id!="nc"){
         <td width="12" height="30"><img src="<%=basePath%>resource/images/tab_03.gif" width="12" height="30" /></td>
                 <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
           <tr>
-            <td class="STYLE4" align="center">&nbsp;&nbsp;请输入查询内容：
-               <input id="customerInput" type="text" name="customerInput" style="width: 290px"/>
-            </td>
+            
             <td class="STYLE4">&nbsp;&nbsp;请选择查询方式：
                 <select name="queryType" style="width: 100px" >
       					<option value="1" >关怀客户</option>
@@ -146,7 +226,10 @@ if  (cs[1].style.backgroundColor!=clickcolor&&source.id!="nc"){
      				 	<option value="3" >关怀方式</option>
    				 </select>            
    			</td>
-   			
+   			<td class="STYLE4" align="center">&nbsp;&nbsp;请输入查询内容：
+               <input id="customerInput" type="text" name="customerInput" style="width: 290px" onkeyup="searchSuggest()"/>
+               <div id="suggest" style="width: 290px"></div>
+            </td>
             <td class="STYLE4">&nbsp;&nbsp;
                 <input  type="submit" value="查询" style="width:50px"/>
             </td>           

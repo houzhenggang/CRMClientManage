@@ -35,6 +35,32 @@ function validator(){
 function checkForm(){
 	document.form2.action = "";
 }
+var xmlHttp;
+function createXMLHttpRequest(){ 
+	if(window.XMLHttpRequest){
+		xmlHttp = new XMLHttpRequest(); //非ie浏览器
+	}else if(window.ActiveObject){
+		xmlHttp= new ActiveObject("Microsoft.XMLHTTP");  //ie浏览器
+	}
+}	
+function checkname(){
+	var name = document.getElementById("userName").value;
+	createXMLHttpRequest();
+	xmlHttp.open("get","CheckUserNameServlet?name="+name, true);
+	xmlHttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded;");
+	xmlHttp.onreadystatechange=f1;
+	xmlHttp.send(null);
+}
+function f1(){
+	var str = xmlHttp.responseText;
+	if(str=="true"){
+		var namets = document.getElementById("umsg");
+		namets.innerHTML = "该用户名已被占用！";
+		namets.style.color="red";
+	}else{
+		document.getElementById("umsg").innerHTML = "";
+	}
+}
 </script>
 	</head>
 
@@ -55,8 +81,9 @@ function checkForm(){
 						</div>
 					</td>
 					<td colspan="3" bgcolor="#FFFFFF">
-						<input type="text" name="userName"  maxlength="10" style="width: 145px" valid="required"  errmsg="员工姓名不能为空!" >
-						&nbsp;
+						<input type="text" id="userName" name="userName"  maxlength="10" style="width: 145px" valid="required"  errmsg="员工姓名不能为空!" 
+						onblur="checkname()">
+						&nbsp;<span id="umsg"></span>
 					</td>
 					<td width="13%" bgcolor="#FFFDF0">
 						<div align="center">

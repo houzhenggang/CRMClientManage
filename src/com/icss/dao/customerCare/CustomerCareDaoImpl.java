@@ -91,4 +91,14 @@ public class CustomerCareDaoImpl extends BaseDao implements CustomerCareDao{
 		
 		return queryOnPage(sql.toString(),nowPage, pageSize);
 	}
+
+	@Override
+	public ResultSet checkName(int id) throws Exception {
+		StringBuilder sql = new StringBuilder()
+				.append(" select distinct customer_id from customer_care ")
+				.append(" where customer_id like '"+ id +"%'")
+				;
+		
+		return executeQuery(sql.toString());
+	}
 }
