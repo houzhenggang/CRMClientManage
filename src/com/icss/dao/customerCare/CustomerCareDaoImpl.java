@@ -93,10 +93,30 @@ public class CustomerCareDaoImpl extends BaseDao implements CustomerCareDao{
 	}
 
 	@Override
-	public ResultSet checkName(int id) throws Exception {
+	public ResultSet checkId(int id) throws Exception {
 		StringBuilder sql = new StringBuilder()
 				.append(" select distinct customer_id from customer_care ")
 				.append(" where customer_id like '"+ id +"%'")
+				;
+		
+		return executeQuery(sql.toString());
+	}
+
+	@Override
+	public ResultSet checkTheme(String theme) throws Exception {
+		StringBuilder sql = new StringBuilder()
+				.append(" select distinct care_theme from customer_care ")
+				.append(" where care_theme like '%"+ theme +"%'")
+				;
+		
+		return executeQuery(sql.toString());
+	}
+
+	@Override
+	public ResultSet checkWay(String way) throws Exception {
+		StringBuilder sql = new StringBuilder()
+				.append(" select distinct care_way from customer_care ")
+				.append(" where care_way like '%"+ way +"%'")
 				;
 		
 		return executeQuery(sql.toString());

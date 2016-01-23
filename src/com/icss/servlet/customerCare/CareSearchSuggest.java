@@ -1,4 +1,4 @@
-package com.icss.servlet.user;
+package com.icss.servlet.customerCare;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -27,7 +27,8 @@ public class CareSearchSuggest extends HttpServlet {
 			throws ServletException, IOException {
 		response.setContentType("text/html;charset=utf-8");
 		String str = request.getParameter("search");
-		int id = Integer.parseInt(str);
+		String queryType = request.getParameter("queryType");
+		
 		
 		PrintWriter out = response.getWriter();
 		ResultSet rs = null;
@@ -42,7 +43,16 @@ public class CareSearchSuggest extends HttpServlet {
 				}else{
 					str = new String(str.getBytes("iso8859-1"),"GBK");
 				}
-				rs = dao.checkName(id);
+				
+				if(queryType.equals("1")){
+					int id = Integer.parseInt(str);
+					rs = dao.checkId(id);
+				}else if(queryType.equals("2")){
+					rs = dao.checkTheme(queryType);
+				}else{
+					rs = dao.checkWay(queryType);
+				}	
+				
 				while (rs.next()) {
 					strList.add(rs.getInt(1));
 				}

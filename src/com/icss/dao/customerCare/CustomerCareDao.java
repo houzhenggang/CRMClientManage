@@ -28,5 +28,7 @@ public interface CustomerCareDao {
 	
 	public List<Map<String, Object>> queryCareByCareway(int nowPage,int pageSize,String careway) throws Exception;
 	
-	public ResultSet checkName(int id) throws Exception;
+	public ResultSet checkId(int id) throws Exception;
+	public ResultSet checkTheme(String theme) throws Exception;
+	public ResultSet checkWay(String way) throws Exception;
 }
