@@ -91,7 +91,7 @@ public class UserDaoImpl extends BaseDao implements UserDao{
 				
 		return executeQuery(sql.toString(), usernum,pwd);
 	}
-
+	
 	@Override
 	public ResultSet checkName() throws Exception {
 		

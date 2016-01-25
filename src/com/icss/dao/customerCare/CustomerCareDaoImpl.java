@@ -8,7 +8,10 @@ import com.icss.bean.customerCare.CustomerCareBean;
 import com.icss.dao.BaseDao;
 
 import oracle.net.aso.e;
-
+/**
+ * 
+ * @author ÍõÍò³¬
+ */
 public class CustomerCareDaoImpl extends BaseDao implements CustomerCareDao{
 
 	@Override
@@ -91,7 +94,7 @@ public class CustomerCareDaoImpl extends BaseDao implements CustomerCareDao{
 		
 		return queryOnPage(sql.toString(),nowPage, pageSize);
 	}
-
+	
 	@Override
 	public ResultSet checkId(int id) throws Exception {
 		StringBuilder sql = new StringBuilder()
@@ -106,7 +109,7 @@ public class CustomerCareDaoImpl extends BaseDao implements CustomerCareDao{
 	public ResultSet checkTheme(String theme) throws Exception {
 		StringBuilder sql = new StringBuilder()
 				.append(" select distinct care_theme from customer_care ")
-				.append(" where care_theme like '%"+ theme +"%'")
+				.append(" where care_theme like '"+ theme +"%'")
 				;
 		
 		return executeQuery(sql.toString());
@@ -116,7 +119,7 @@ public class CustomerCareDaoImpl extends BaseDao implements CustomerCareDao{
 	public ResultSet checkWay(String way) throws Exception {
 		StringBuilder sql = new StringBuilder()
 				.append(" select distinct care_way from customer_care ")
-				.append(" where care_way like '%"+ way +"%'")
+				.append(" where care_way like '"+ way +"%'")
 				;
 		
 		return executeQuery(sql.toString());

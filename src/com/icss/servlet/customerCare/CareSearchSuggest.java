@@ -14,7 +14,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.icss.dao.customerCare.CustomerCareDao;
 import com.icss.dao.customerCare.CustomerCareFactory;
-
+/**
+ * 根据输入值智能弹出下拉列表，使用到模糊查询从数据库调用数据
+ * @author 王万超
+ *
+ */
 @WebServlet("/CareSearchSuggest")
 public class CareSearchSuggest extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -28,7 +32,7 @@ public class CareSearchSuggest extends HttpServlet {
 		response.setContentType("text/html;charset=utf-8");
 		String str = request.getParameter("search");
 		String queryType = request.getParameter("queryType");
-		
+		System.out.println(queryType);
 		
 		PrintWriter out = response.getWriter();
 		ResultSet rs = null;

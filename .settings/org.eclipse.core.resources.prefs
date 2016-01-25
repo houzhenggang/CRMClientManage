@@ -1,0 +1,13 @@
+eclipse.preferences.version=1
+encoding//src/com/icss/dao/DepartmentInfoDao/DepartmentInfoDao.java=UTF-8
+encoding//src/com/icss/dao/DepartmentInfoDao/DepartmentInfoDaoImpl.java=UTF-8
+encoding//src/com/icss/dao/customerinfo/CustomerInfoDao.java=UTF-8
+encoding//src/com/icss/dao/customerinfo/CustomerInfoDaoImpl.java=UTF-8
+encoding//src/com/icss/dao/notice/NoticeDao.java=UTF-8
+encoding//src/com/icss/dao/notice/NoticeDaoImpl.java=UTF-8
+encoding//src/com/icss/servlet/custmoerinfo/AddCustmerServlet.java=UTF-8
+encoding//src/com/icss/servlet/custmoerinfo/QueryByidToupCustomerServlet.java=UTF-8
+encoding//src/com/icss/servlet/custmoerinfo/UpdateCustomerServlet.java=UTF-8
+encoding//src/com/icss/servlet/department/DepartmentInfoAddServlet.java=UTF-8
+encoding//src/com/icss/servlet/notice/AddNoticeServlet.java=UTF-8
+encoding//src/com/icss/servlet/notice/QueryToupdateNoticeServlet.java=UTF-8
