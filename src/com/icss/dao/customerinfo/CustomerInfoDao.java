@@ -1,5 +1,6 @@
 package com.icss.dao.customerinfo;
 
+import java.sql.ResultSet;
 import java.util.List;
 import java.util.Map;
 
@@ -14,6 +15,11 @@ public interface CustomerInfoDao {
 	public int addCustomer(CustomerInfoBean bean)throws Exception;
 	//查询
 	public List<CustomerInfoBean> queryAllCustomer() throws Exception;
+	/**
+	 * 日期：2016-01-25
+	 * 作者：王万超
+	 */
+	public ResultSet queryAllCustomers() throws Exception;
 	//删除
 	public int deletCustomer(String id)throws Exception;
 	//修改

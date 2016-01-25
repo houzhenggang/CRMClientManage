@@ -16,12 +16,14 @@ public interface UserDao {
 	
 	//用于更新编辑时填充信息
 	public List<Map<String, Object>> queryUserById(int user_id) throws Exception;
-	
+	//进入员工信息页面时候的查询
 	public List<Map<String, Object>> queryUserOnPage(int nowPage, int pageSize) throws Exception;
 	public int getRowCount();
 	public int getPageSize();
 	public int getNowPage() ;
 	public int getPageCount();
+	//用于查询所有员工
+	public List<Map<String, Object>> queryAllUser() throws Exception;
 	
 	public List<Map<String, Object>> queryUserByName(int nowpage,int pagesize,String name)throws Exception;
 	

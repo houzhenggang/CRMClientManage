@@ -1,6 +1,8 @@
 package com.icss.servlet.customerCare;
 
 import java.io.IOException;
+import java.sql.ResultSet;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.icss.bean.customerCare.CustomerCareBean;
 import com.icss.dao.customerCare.CustomerCareDao;
 import com.icss.dao.customerCare.CustomerCareFactory;
+import com.icss.dao.customerinfo.CustomerInfoDao;
+import com.icss.dao.customerinfo.CustomerInfoFactory;
 
 @WebServlet("/CustomerCareAddServlet")
 public class CustomerCareAddServlet extends HttpServlet {
@@ -32,9 +36,12 @@ public class CustomerCareAddServlet extends HttpServlet {
 		
 		System.out.println(cusId+careTime);
 		CustomerCareDao dao = CustomerCareFactory.getInstance();
+		
 		CustomerCareBean careBean = new CustomerCareBean(cusId,careTheme,careWay,careTime,careRemark,careNexttime,carePeople);
 		String path = "CustomerCareQueryServlet";
+		
 		try {
+			
 			int rows = dao.addCustomerCare(careBean);
 			
 		} catch (Exception e) {

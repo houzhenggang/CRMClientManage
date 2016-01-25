@@ -7,6 +7,7 @@
 			+ path + "/";
 %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page import="java.sql.ResultSet" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 	<head>
@@ -72,10 +73,15 @@
 						<select name="customerId" style="width: 145px">
 							
 							<!-- 循环输出客户下拉列表 -->
-							<option value="1" selected="selected">孙悟空</option>
-							<option value="2">华纳</option>
-							<option value="3">刘欢</option>
-						
+							<% 
+							ResultSet rs = (ResultSet) request.getAttribute("customers");
+							while(rs.next()){
+								
+							%>
+							    <option value="<%=rs.getInt(1) %>"  >
+							    <%=rs.getString(2) %></option>
+
+						   <% } %>
 						</select>
 						&nbsp;
 					</td>
@@ -122,23 +128,21 @@
 						</div>
 					</td>
 					<td colspan="3" bgcolor="#FFFFFF">
-						<select name="careWay" value="${careUpdBean.care_way }"
+						<select name="careWay" value=""
 							style="width: 145px">
-							<option 
-								selected="selected" >
+							<option <c:if test="${careUpdBean.care_way=='发短信' }"> selected="selected" </c:if> >
 								发短信
 							</option>
-							<option>
+							<option <c:if test="${careUpdBean.care_way=='送礼品' }"> selected="selected" </c:if> >
 								送礼品
 							</option>
-							<option >
+							<option <c:if test="${careUpdBean.care_way=='电话问候' }"> selected="selected" </c:if> >
 								电话问候
 							</option>
-							<option >
+							<option <c:if test="${careUpdBean.care_way=='上门拜访' }"> selected="selected" </c:if> >
 								上门拜访
 							</option>
 							<option >
-
 								其他
 							</option>
 						</select>

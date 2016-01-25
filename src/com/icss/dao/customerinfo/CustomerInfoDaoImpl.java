@@ -51,19 +51,20 @@ public class CustomerInfoDaoImpl extends BaseDao implements CustomerInfoDao{
 				;
 	}
 	/**
-	 * 查询全部数据
+	 * 查询全部数据 @author 才新
 	 */
 	@Override
 	public List<CustomerInfoBean> queryAllCustomer() throws Exception {
 		
-		List<CustomerInfoBean> allData = new ArrayList<CustomerInfoBean>();// 返回值
+		List<CustomerInfoBean> allData = new ArrayList<CustomerInfoBean>();    // 返回值
 		
-		StringBuilder sql = new StringBuilder().append(" SELECT ")
+		StringBuilder sql = new StringBuilder()
+				.append(" SELECT ")
 				.append("  Customer_id,Condition_id,Source_id,User_id,Type_id,Customer_name, ")
 				.append("  Customer_sex,Customer_mobile,Customer_qq,Customer_address,Customer_email,Customer_remark, ")
 				.append("  Customer_job,Customer_blog,Customer_tel,Customer_msn,Birth_day,Customer_addtime,Customer_addman, ")
 				.append("   Customer_changtime,Change_man,Customer_company,Is_used  ")		
-				.append(" FROM Customer_Info ORDERBY Customer_id ");
+				.append(" FROM Customer_Info ORDER BY Customer_id ");
 		ResultSet rs = executeQuery(sql.toString());
 		try {
 			while (rs.next()) {
@@ -99,6 +100,8 @@ public class CustomerInfoDaoImpl extends BaseDao implements CustomerInfoDao{
 			closeAll();
 		}
 	}
+	
+	
 	/**
 	 * 删除数据
 	 */
@@ -218,8 +221,7 @@ public class CustomerInfoDaoImpl extends BaseDao implements CustomerInfoDao{
 				.append("   source_name,type_name,user_name ")
 				.append(" FROM customer_info CF,customer_condition CC,customer_source CS,customer_type CT,user_info UI   ")
 				.append(" WHERE CF.CONDITION_ID=CC.CONDITION_ID AND CF.SOURCE_ID=CS.SOURCE_ID AND CF.USER_ID=UI.USER_ID AND CF.TYPE_ID=CT.TYPE_ID ");
-		return queryOnPage(sql.toString()
-				, nowpage, pagesize);
+		return queryOnPage(sql.toString(), nowpage, pagesize);
 		
 	}
 	/**
@@ -324,6 +326,16 @@ public class CustomerInfoDaoImpl extends BaseDao implements CustomerInfoDao{
 			sql.append("  and birth_day=sysdate ");
 		}
 		return executeQueryByMap(sql.toString());
+	}
+	
+	/**
+	 * 修改人：王万超
+	 * 日期：2016-01-25
+	 */
+	@Override
+	public ResultSet queryAllCustomers() throws Exception {
+		
+		return executeQuery(" select customer_id,customer_name from customer_info ORDER BY Customer_id  ");
 	}
 	
 	

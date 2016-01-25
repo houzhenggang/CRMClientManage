@@ -45,6 +45,7 @@ A:hover {
 .suggest_link {
 	background-color: #FFFFFF;
 	padding: 2px 6px 2px 6px;
+
 }
 
 .suggest_link_over {
@@ -111,7 +112,7 @@ if  (cs[1].style.backgroundColor!=clickcolor&&source.id!="nc"){
 </script>
 <script type="text/javascript">
 	function add(){  
-			location.href="view/customerCare/customerCare_add.jsp";
+			location.href="CustomerCareQueryDataServlet";
 		}
 	
 	function upd(careId){
@@ -155,8 +156,9 @@ if  (cs[1].style.backgroundColor!=clickcolor&&source.id!="nc"){
 			return false;
 		}
 		
+		var queryType = document.getElementById("queryType").value;
 		var str = document.getElementById("customerInput").value;
-		xmlHttp.open("POST","CareSearchSuggest?search="+str, true);
+		xmlHttp.open("POST","CareSearchSuggest?queryType="+queryType+"&search="+str, true);
 		
 		xmlHttp.onreadystatechange = processRequest;
 		xmlHttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
@@ -220,7 +222,7 @@ if  (cs[1].style.backgroundColor!=clickcolor&&source.id!="nc"){
           <tr>
             
             <td class="STYLE4">&nbsp;&nbsp;请选择查询方式：
-                <select name="queryType" style="width: 100px" >
+                <select id="queryType" name="queryType" style="width: 100px" >
       					<option value="1" >关怀客户</option>
      				 	<option value="2" >关怀主题</option>
      				 	<option value="3" >关怀方式</option>
