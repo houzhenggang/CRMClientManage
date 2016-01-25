@@ -14,6 +14,11 @@ import javax.servlet.http.HttpServletResponse;
 import com.icss.dao.customerCare.CustomerCareDao;
 import com.icss.dao.customerCare.CustomerCareFactory;
 
+/**
+ * 客户关怀 + 查询业务逻辑
+ * @author 王万超
+ *
+ */
 @WebServlet("/CustomerCareQueryServlet")
 public class CustomerCareQueryServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -46,9 +51,9 @@ public class CustomerCareQueryServlet extends HttpServlet {
 				String queryType = request.getParameter("queryType");
 				String customerInput = request.getParameter("customerInput");
 				
-				System.out.println("queryType - "+ queryType+"\t customerInput - "+customerInput);
+				
 				if(queryType.equals("1")){
-					int cust_id = Integer.parseInt(queryType);
+					int cust_id = Integer.parseInt(customerInput);
 					allData = dao.queryCareByCustomer(nowPage,4,cust_id);
 				}else if(queryType.equals("2")){
 					allData = dao.queryCareByTheme(nowPage,4,customerInput);

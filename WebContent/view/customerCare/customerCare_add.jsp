@@ -6,6 +6,7 @@
 			+ path + "/";
 %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page import="java.sql.ResultSet" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 	<head>
@@ -75,7 +76,16 @@
 							   <option value="${custRow.customer_id}" selected="selected">${custRow.customer_name }</option>
 							</c:forEach>
 							-->
-						    <option value="1" selected="selected">孙悟空</option>
+						    <!-- 循环输出客户下拉列表 -->
+							<% 
+							ResultSet rs = (ResultSet) request.getAttribute("cust_add");
+							while(rs.next()){
+								
+							%>
+							    <option value="<%=rs.getInt(1) %>"  >
+							    <%=rs.getString(2) %></option>
+
+						   <% } %>
 						</select>
 						<input type="hidden" value="<%=new java.text.SimpleDateFormat("yyyy-MM-dd").format(new Date())%>" name="careTime">
 					</td>

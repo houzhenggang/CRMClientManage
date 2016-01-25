@@ -8,7 +8,10 @@ import com.icss.bean.customerCare.CustomerCareBean;
 import com.icss.dao.BaseDao;
 
 import oracle.net.aso.e;
-
+/**
+ * 操作数据库方法的实现
+ * @author 王万超
+ */
 public class CustomerCareDaoImpl extends BaseDao implements CustomerCareDao{
 
 	@Override
@@ -66,6 +69,10 @@ public class CustomerCareDaoImpl extends BaseDao implements CustomerCareDao{
 		return executeQuery("select * from customer_care where care_id=? ", care_id);
 	}
 
+	/**
+	 * 根据关怀客户，关怀主题，关怀方式模糊查询
+	 * 同时查询结果分页
+	 */
 	public List<Map<String, Object>> queryCareByTheme(int nowPage,int pageSize,String theme) 
 			throws Exception{
 		StringBuilder sql = new StringBuilder()
@@ -91,12 +98,15 @@ public class CustomerCareDaoImpl extends BaseDao implements CustomerCareDao{
 		
 		return queryOnPage(sql.toString(),nowPage, pageSize);
 	}
-
+	
+	/**
+	 * 根据输入内容，模糊查询，智能提示下拉框
+	 */
 	@Override
 	public ResultSet checkId(int id) throws Exception {
 		StringBuilder sql = new StringBuilder()
 				.append(" select distinct customer_id from customer_care ")
-				.append(" where customer_id like '"+ id +"%'")
+				.append(" where customer_id like '%"+ id +"%'")
 				;
 		
 		return executeQuery(sql.toString());
