@@ -1,4 +1,4 @@
-package com.icss.bean.linkmanBean;
+package com.icss.bean;
 
 
 public class LinkmanBean {

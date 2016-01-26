@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import com.icss.bean.customer.CustomerInfoBean;
+import com.icss.bean.CustomerInfoBean;
 import com.icss.dao.BaseDao;
 
 /**

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import com.icss.bean.notice.NoticeBean;
+import com.icss.bean.NoticeBean;
 import com.icss.dao.BaseDao;
 
 /**

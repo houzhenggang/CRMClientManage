@@ -1,4 +1,4 @@
-package com.icss.bean.customerCare;
+package com.icss.bean;
 
 public class CustomerCareBean {
 

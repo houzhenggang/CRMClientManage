@@ -7,8 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-import com.icss.bean.linkmanBean.LinkmanBean;
+import com.icss.bean.LinkmanBean;
 import com.icss.dao.linkmanDao.linkmanInfoDao;
 import com.icss.dao.linkmanDao.linkmanInfoFactory;
 

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import com.icss.bean.department.DepartmentInfoBean;
+import com.icss.bean.DepartmentInfoBean;
 import com.icss.dao.BaseDao;
 
 public class DepartmentInfoDaoImpl extends BaseDao implements DepartmentInfoDao{

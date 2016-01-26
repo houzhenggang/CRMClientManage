@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.icss.bean.user.UserBean;
+import com.icss.bean.UserBean;
 import com.icss.dao.user.UserDao;
 import com.icss.dao.user.UserDaoFactory;
 

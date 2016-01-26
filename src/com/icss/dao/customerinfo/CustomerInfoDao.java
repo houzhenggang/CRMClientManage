@@ -4,7 +4,7 @@ import java.sql.ResultSet;
 import java.util.List;
 import java.util.Map;
 
-import com.icss.bean.customer.CustomerInfoBean;
+import com.icss.bean.CustomerInfoBean;
 /**
  * CustomerInfo客户信息dao
  * @author 才新

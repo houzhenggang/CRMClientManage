@@ -1,4 +1,4 @@
-package com.icss.bean.customer;
+package com.icss.bean;
 /**
  * CustomerInfoBean客户信息bean
  * @author 才新
