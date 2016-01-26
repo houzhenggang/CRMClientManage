@@ -1,4 +1,4 @@
-package com.icss.bean.department;
+package com.icss.bean;
 
 public class DepartmentInfoBean {
 	private String department_id;

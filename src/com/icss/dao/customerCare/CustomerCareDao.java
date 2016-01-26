@@ -4,7 +4,7 @@ import java.sql.ResultSet;
 import java.util.List;
 import java.util.Map;
 
-import com.icss.bean.customerCare.CustomerCareBean;
+import com.icss.bean.CustomerCareBean;
 
 public interface CustomerCareDao {
 

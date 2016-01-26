@@ -1,4 +1,4 @@
-package com.icss.bean.user;
+package com.icss.bean;
 
 public class UserBean {
 	private int    user_id ;

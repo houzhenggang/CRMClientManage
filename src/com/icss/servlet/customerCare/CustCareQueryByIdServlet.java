@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.icss.bean.customer.CustomerInfoBean;
-import com.icss.bean.customerCare.CustomerCareBean;
+import com.icss.bean.CustomerCareBean;
+import com.icss.bean.CustomerInfoBean;
 import com.icss.dao.customerCare.CustomerCareDao;
 import com.icss.dao.customerCare.CustomerCareFactory;
 import com.icss.dao.customerinfo.CustomerInfoDao;

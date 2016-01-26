@@ -3,7 +3,7 @@ package com.icss.dao.DepartmentInfoDao;
 import java.util.List;
 import java.util.Map;
 
-import com.icss.bean.department.DepartmentInfoBean;
+import com.icss.bean.DepartmentInfoBean;
 
 /**
  * 崔鹏程

@@ -7,8 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.icss.bean.customer.CustomerInfoBean;
-import com.icss.bean.notice.NoticeBean;
+import com.icss.bean.CustomerInfoBean;
+import com.icss.bean.NoticeBean;
 import com.icss.dao.customerinfo.CustomerInfoFactory;
 import com.icss.dao.notice.NoticeFactory;
 

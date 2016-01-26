@@ -1,4 +1,4 @@
-package com.icss.bean.notice;
+package com.icss.bean;
 
 public class NoticeBean {
 	

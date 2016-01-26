@@ -4,7 +4,7 @@ import java.sql.ResultSet;
 import java.util.List;
 import java.util.Map;
 
-import com.icss.bean.user.UserBean;
+import com.icss.bean.UserBean;
 
 import oracle.net.aso.e;
 

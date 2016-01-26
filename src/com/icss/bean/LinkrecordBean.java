@@ -1,4 +1,4 @@
-package com.icss.bean.Linkrecord;
+package com.icss.bean;
 
 public class LinkrecordBean {
 	private int record_id;

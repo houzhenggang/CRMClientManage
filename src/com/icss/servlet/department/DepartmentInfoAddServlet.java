@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.icss.bean.department.DepartmentInfoBean;
+import com.icss.bean.DepartmentInfoBean;
 import com.icss.dao.DepartmentInfoDao.DepartmentInfoDao;
 import com.icss.dao.DepartmentInfoDao.DepartmentInfoDaoFactory;
 

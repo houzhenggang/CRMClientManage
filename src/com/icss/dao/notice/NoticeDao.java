@@ -2,7 +2,8 @@ package com.icss.dao.notice;
 
 import java.util.List;
 import java.util.Map;
-import com.icss.bean.notice.NoticeBean;
+
+import com.icss.bean.NoticeBean;
 /**
  * Notice客户信息dao
  * @author 才新

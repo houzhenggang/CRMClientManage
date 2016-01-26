@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import com.icss.bean.Linkrecord.LinkrecordBean;
+import com.icss.bean.LinkrecordBean;
 import com.icss.dao.BaseDao;
 
 public class LinkrecordInfoDaoImpl extends BaseDao implements LinkrecordInfoDao{

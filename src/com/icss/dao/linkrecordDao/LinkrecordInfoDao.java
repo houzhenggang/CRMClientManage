@@ -3,7 +3,7 @@ package com.icss.dao.linkrecordDao;
 import java.util.List;
 import java.util.Map;
 
-import com.icss.bean.Linkrecord.LinkrecordBean;
+import com.icss.bean.LinkrecordBean;
 
 public interface LinkrecordInfoDao {
 	//将Dao(数据库访问对象)做成一个接口，在接口中声明所有数据库的操作方法

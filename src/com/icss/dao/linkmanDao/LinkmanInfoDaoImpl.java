@@ -5,8 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-
-import com.icss.bean.linkmanBean.LinkmanBean;
+import com.icss.bean.LinkmanBean;
 import com.icss.dao.BaseDao;
 
 
